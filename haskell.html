@@ -57,13 +57,29 @@
 					<h3>A Gentle Introduction</h3>
 					<p style="text-align:center;"><small>Created by John Requiroso / <a href="http://twitter.com/kazuo1231">@kazuo1231</a></small></p>
 				</section>
-
+				<section>
+					<h2>Who am I?</h2>
+					<ul>
+						<li>John Requiroso or JR</li>
+						<li>Senior Web Developer, RedLemon Digital Media</li>
+						<li>Developers Connect (DevCon PH) CDeO Representative</li>
+						<li>Not an expert. I just like Lambda Calculus.</li>
+					</ul>
+				</section>
 				<section>
 					<section>
-						<h4>What do you think Haskell is?</h4>
+						<h4>What do you think about Haskell?</h4>
 						<img src="http://i.imgur.com/qGVkj2W.jpg" />
 					</section>
 				</section>
+				<section>
+					<h2>Quote:</h2>
+					<blockquote class="fragment roll-in">
+						Language shapes the way we think, and determines what we can think about.
+					</blockquote >
+					<small class="fragment roll-in">- Benjamin Lee Whorf</small>
+				</section>
+
 				<section>
 					<section>
 						<h2>Haskell is...</h2>
@@ -77,67 +93,27 @@
 						<p><img src="http://i.imgur.com/7uY3URy.png"/></p>
 					</section>
 					<section>
-						<h4>Haskell is Based on Lambda Calculus</h4>
-						<table>
-							<thead>
-								<tr>
-									<th>Derived Syntax</th>
-									<th>Core Syntax</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>f x = expr</td>
-									<td>f = λx → expr</td>
-									<td>-- lambda</td>
-								</tr>
-								<tr>
-									<td>(x *)</td>
-									<td>λy → x * y</td>
-									<td>-- sections</td>
-								</tr>
-								<tr>
-									<td>(* y)</td>
-									<td>λx → x * y</td>
-									<td>-- sections</td>
-								</tr>
-								<tr>
-									<td>(*)</td>
-									<td>λx y → x * y</td>
-									<td>-- sections</td>
-								</tr>
-								<tr>
-									<td>x `times` y</td>
-									<td>times x y</td>
-									<td>-- infix func</td>
-								</tr>
-								<tr>
-									<td>f $ g $ h x</td>
-									<td>f (g (h x))</td>
-									<td>-- parens</td>
-								</tr>
-								<tr>
-									<td>(f . g . h) x</td>
-									<td>f (g (h x))</td>
-									<td>-- compose</td>
-								</tr>
-								<tr>
-									<td>do a; b; c</td>
-									<td>a >>= b >>= c</td>
-									<td>-- I/O bind</td>
-								</tr>
-							</tbody>
-								
-						</table>
-					</section>
-					<section>
 						<h4>Haskell is...</h4>
 						<h2>Functional</h2>
 						<ul>
 							<li>Functions are first-class, that is, functions are values which can be used in exactly the same ways as any other sort of value.</li>
-							<li>The meaning of Haskell programs is centered around evaluating expressions rather than executing instructions.</li>
+						<pre><code class="haskell">
+g(x) = x - 1
+g(f(x)) = x² 
+						</code></pre>
+							<li>The meaning of Haskell programs is centered around evaluating expressions rather than executing instructions (Every input has a corresponding output).</li>
+						<pre><code class="haskell">
+f(x) = x² + 1 
+						</code></pre>
 						</ul>
+					</section>
+					<section>
+						<h2>Functional Languages:</h2>
+						<p>Haskell, Lisp, ML, Scheme, Erlang</p>
+                        <p><small>Focuses on the high-level <i>"what"</i></small></p>
+                        <h2>Imperative:</h2>
+                        <p>C++, Java, Python, Pascal</p>
+                        <p><small>Focuses on the low-level <i>"how"</i></small></p>
 					</section>
 					<section>
 						<h4>Haskell is...</h4>
@@ -145,38 +121,19 @@
 						<ul>
 							<li>No mutation! Everything (variables, data structures…) is <i>immutable</i>.</li>
 							<li>Expressions never have "side effects" (like updating global variables or printing to the screen).</li>
-							<li>Calling the same function with the same arguments results in the same output every time. Programs are <i>deterministic</i>.</li>
+							<li>Order doesn't matter!</li>
+							<li>Easy concurrency</li>
 						</ul>
 					</section>
 					<section>
 						<h4>Haskell is...</h4>
-						<img src="http://i.imgur.com/f8SoR2i.jpg" />
-					</section>
-					<section>
-						<h4>Haskell is...</h4>
 						<h2>Lazy</h2>
-
+						<img src="http://i.imgur.com/f8SoR2i.jpg" />
 						<ul>
 							<li>Expressions are not evaluated until their results are actually needed</li>
-							<li>It is easy to define a new control structure just by defining a function.</li>
 							<li>It is possible to define and work with infinite data structures.</li>
 						</ul>						
 					</section>
-					<section>
-						<h4>Haskell is Lazy Example</h4>
-						<h3>C/Java</h3>
-						<pre><code class="java">
-int acc = 0;
-for ( int i = 0; i < lst.length; i++ ) { 
-    acc = acc + 3 * lst[i];
-}
-						</code></pre>
-						<h3>Haskell</h3>
-						<pre><code class="haskell">
-sum (map (3*) lst)
-						</code></pre>
-					</section>
-
 					<section>
 						<h4>Haskell is...</h4>
 						<h2>Statically Typed</h2>
@@ -184,11 +141,21 @@ sum (map (3*) lst)
 							<li>Every Haskell expression has a type, and types are all checked at <i>compile-time</i>. Programs with type errors will not even compile, much less run.</li>
 						</ul>
 					</section>
+					<section>
+						<h2>Why use Haskell?</h2>
+
+						<ul>
+							<li>Lets me think differently about programming.</li>
+							<li>Different and possibly better or faster solutions when applied to non-functional proglangs.</li>
+							<li>I am lazy.</li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
 					<section>
 						<h2>Basic Haskell Syntax</h2>
+						<img src="http://i.imgur.com/rGtkXzS.jpg" />
 					</section>
 					<section>
 						<h4>Basic Haskell Syntax</h4>
@@ -246,6 +213,7 @@ False
 				<section>
 					<section>
 						<h2>Basic Functions</h2>
+						<img src="http://i.imgur.com/3N6MzwZ.png">
 					</section>
 
 					<section>
@@ -306,6 +274,7 @@ succ 9 * 10
 				<section>
 					<section>
 						<h2>Loading and Compiling Haskell Files</h2>
+						<img src="http://i.imgur.com/lhaipTA.png">
 					</section>
 					<section>
 						<h4>Loading and Compiling Haskell Files</h4>
@@ -344,7 +313,7 @@ else x*2
 						</code></pre>
 						<p>The <code>else</code> part of Haskell’s <code>if</code> statement is mandatory, thus the <code>if</code> statement is an expression since it will always return a value and so can be plugged in anywhere!</p>
 						<pre><code class="haskell">
-	doubleSmallNumber' x = (if x > 100 then x else x*2) + 1
+doubleSmallNumber' x = (if x > 100 then x else x*2) + 1
 						</code></pre>
 					</section>
 				</section>
@@ -352,6 +321,7 @@ else x*2
 				<section>
 					<section>
 						<h2>Lists</h2>
+						<img src="http://i.imgur.com/rZE4Cou.jpg">
 					</section>
 					<section>
 						<h4>Lists</h4>
@@ -701,6 +671,7 @@ rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c],
 				<section>
 					<section>
 						<h2>Types</h2>
+						<h4>Some of these are advanced concepts so we will just quickly skim through.</h4>
 					</section>
 
 					<section>
@@ -934,6 +905,153 @@ cylinder r h =
   in  sideArea + 2 * topArea  
 						</code></pre>
 					</section>
+
+					<section>
+						<h4>Syntax in Functions - Let Bindings</h4>
+						<p>The difference between let bindings and where bindings is that let bindings are expressions, just like if statements:</p>
+						<pre><code class="haskell">
+ghci> 4 * (if 10 > 5 then 10 else 0) + 2
+42
+ghci> 4 * (let a = 9 in a + 1) + 2
+42
+						</code></pre>
+					</section>
+					<section>
+						<h4>Syntax in Functions - Let Bindings</h4>
+						<h2>Any Questions?</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Recursion</h2>
+						<img src="http://i.imgur.com/kxmdoEf.jpg">
+					</section>
+					<section>
+						<h4>Recursion</h4>
+						<p>Recursion is actually a way of defining functions in which the function is applied inside its own definition. Definitions in mathematics are often given recursively. </p>
+						<pre><code class="haskell">
+factorial :: (Integral a) => a -> a  
+factorial 0 = 1  
+factorial n = n * factorial (n - 1)
+
+length' :: (Num b) => [a] -> b  
+length' [] = 0  
+length' (_:xs) = 1 + length' xs
+
+sum' :: (Num a) => [a] -> a  
+sum' [] = 0  
+sum' (x:xs) = x + sum' xs  
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Higher Order Functions</h2>
+					</section>
+					<section>
+						<p>Functions can take functions as arguments</p>
+						<img src="http://i.imgur.com/VKYvYgI.png">
+					</section>
+					<section>
+						<h2>Maps</h2>
+						<p>The map function takes a function and a list and returns a list with the function applied to every element.</p>
+						<pre><code class="haskell">
+ghci> map even [1..10]
+[False,True,False,True,False,True,False,True,False,True]
+ghci> map (+5) [1..10]
+[6,7,8,9,10,11,12,13,14,15]
+						</code></pre>
+					</section>
+					<section>
+						<h2>Filter</h2>
+						<p>A filter refines a list using a predicate.</p>
+						<pre><code class="haskell">
+ghci> filter even [1..10]
+[2,4,6,8,10]
+ghci> filter (>5) [1..10]
+[6,7,8,9,10]
+						</code></pre>
+					</section>
+					<section>
+						<h2>Anonymous Function</h2>
+						<p>We can use λ-calculus to define a function</p>
+						<pre><code class="haskell">
+ghci> map (\x -> x*x) [1..10]
+[1,4,9,16,25,36,49,64,81,100]
+						</code></pre>
+						<p>This notation is inspired from lambda calculus</p>
+						<p>λx.(x*x)</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>As a finale, let's create the Quicksort algorithm!</h2>
+						<p>A sorted list is a list that has all the values smaller than (or equal to) the head of the list in front (and those values are sorted), then comes the head of the list in the middle and then come all the values that are bigger than the head (they're also sorted).</p>
+					</section>
+					<section>
+						<h4>Quicksort</h4>
+						<img src="http://i.imgur.com/AL8JB9g.png">
+					</section>
+					<section>
+						<h4>Quicksort</h4>
+						<p>Our quicksort function will accept an input which can be ordered (class type of Ord)</p>
+						<p>It will accept a list as input and will output a list</p>
+						<pre><code class="haskell">
+	quicksort :: (Ord a) => [a] -> [a]  
+						</code></pre>
+						<p>The Edge Case: An empty list is a sorted list.</p>
+						<pre><code class="haskell">
+	quicksort [] = []  
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Quicksort</h4>
+						<p>The function will take the first element of the list - the head</p>
+						<p>The headless list will then be divided into two - greater than the head and less than the head</p>
+						<p>The head will then be placed in the middle of both of them</p>
+						<pre><code class="haskell">
+	quicksort (x:xs) =   
+	    let smallerSorted = quicksort [a | a <- xs, a <= x]  
+	        biggerSorted = quicksort [a | a <- xs, a > x]  
+	    in  smallerSorted ++ [x] ++ biggerSorted  
+						</code></pre>
+					</section>
+					<section>
+						<h4>Quicksort</h4>
+						<p>Putting everything together we get:</p>
+						<pre><code class="haskell">
+	quicksort :: (Ord a) => [a] -> [a]  
+	quicksort [] = []  
+	quicksort (x:xs) =   
+	    let smallerSorted = quicksort [a | a <- xs, a <= x]  
+	        biggerSorted = quicksort [a | a <- xs, a > x]  
+	    in  smallerSorted ++ [x] ++ biggerSorted  
+						</code></pre>
+						<p>Let's give it a small test run to see if it appears to behave correctly.</p>
+						<pre><code class="haskell">
+	ghci> quicksort [10,2,5,3,1,6,7,4,2,3,4,8,9]  
+	[1,2,2,3,3,4,4,5,6,7,8,9,10]  
+	ghci> quicksort "the quick brown fox jumps over the lazy dog"  
+	"        abcdeeefghhijklmnoooopqrrsttuuvwxyz"  
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<blockquote class="fragment roll-in">
+						A language that doesn’t affect the way you think about programming, is not worth knowing.
+					</blockquote>
+					<small class="fragment roll-in">- Alan Perlis</small>
+				</section>
+
+				<section>
+					<img src="http://i.imgur.com/SvWSZjg.png" />
+					<h3>Thanks for Listening!</h3>
+					
+					<p style="text-align:center;"><small>Created by John Requiroso / <a href="http://twitter.com/kazuo1231">@kazuo1231</a></small></p>
 				</section>
 			</div>
 		</div>
@@ -951,7 +1069,11 @@ cylinder r h =
 				history: true,
 				center: true,
 
-				transition: 'convex', // none/fade/slide/convex/concave/zoom
+				mouseWheel: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      			transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+				//transition: 'convex', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
 				dependencies: [
