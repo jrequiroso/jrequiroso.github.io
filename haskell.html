@@ -25,6 +25,12 @@
 			    border: none;
 			    box-shadow: none; 
 			}
+			p {
+				text-align: left;
+			}
+			.typeclasses li {
+				 font-size: 30px;
+			}
 		</style>
 
 		<!-- Printing and PDF exports -->
@@ -49,9 +55,15 @@
 					<img src="http://i.imgur.com/SvWSZjg.png" />
 					<h1>Haskell</h1>
 					<h3>A Gentle Introduction</h3>
-					<p><small>Created by John Requiroso / <a href="http://twitter.com/kazuo1231">@kazuo1231</a></small></p>
+					<p style="text-align:center;"><small>Created by John Requiroso / <a href="http://twitter.com/kazuo1231">@kazuo1231</a></small></p>
 				</section>
 
+				<section>
+					<section>
+						<h4>What do you think Haskell is?</h4>
+						<img src="http://i.imgur.com/qGVkj2W.jpg" />
+					</section>
+				</section>
 				<section>
 					<section>
 						<h2>Haskell is...</h2>
@@ -138,25 +150,30 @@
 					</section>
 					<section>
 						<h4>Haskell is...</h4>
+						<img src="http://i.imgur.com/f8SoR2i.jpg" />
+					</section>
+					<section>
+						<h4>Haskell is...</h4>
 						<h2>Lazy</h2>
+
 						<ul>
 							<li>Expressions are not evaluated until their results are actually needed</li>
 							<li>It is easy to define a new control structure just by defining a function.</li>
 							<li>It is possible to define and work with infinite data structures.</li>
-						</ul>
+						</ul>						
 					</section>
 					<section>
 						<h4>Haskell is Lazy Example</h4>
 						<h3>C/Java</h3>
 						<pre><code class="java">
-	int acc = 0;
-	for ( int i = 0; i < lst.length; i++ ) { 
-	    acc = acc + 3 * lst[i];
-	}
+int acc = 0;
+for ( int i = 0; i < lst.length; i++ ) { 
+    acc = acc + 3 * lst[i];
+}
 						</code></pre>
 						<h3>Haskell</h3>
 						<pre><code class="haskell">
-	sum (map (3*) lst)
+sum (map (3*) lst)
 						</code></pre>
 					</section>
 
@@ -185,42 +202,42 @@
 						<h4>Basic Haskell Syntax</h4>
 						<p>Simple Arithmetic is what you would expect it to be</p>
 						<pre><code class="haskell">
-	ghci> 2 + 15
-	17
-	ghci> 49 * 100
-	4900
-	ghci> 1892 - 1472
-	420
-	ghci> 5 / 2
-	2.5
-	ghci> 50 * 100 - 4999
-	1
-	ghci> 50 * (100 - 4999)
-	-244950
+ghci> 2 + 15
+17
+ghci> 49 * 100
+4900
+ghci> 1892 - 1472
+420
+ghci> 5 / 2
+2.5
+ghci> 50 * 100 - 4999
+1
+ghci> 50 * (100 - 4999)
+-244950
 						</code></pre>
 					</section>
 					<section>
 						<h4>Basic Haskell Syntax</h4>
 						<p>Wrap negative numbers in parentheses</p>
 						<pre><code class="haskell">
-	ghci> 5 * (-3)
-	-15
+ghci> 5 * (-3)
+-15
 						</code></pre>
 						
 						<p>Boolean algebra with <code>True</code>, <code>False</code>, <code>not</code>, <code>&amp;&amp;</code> and <code>||</code></p>
 						
 						<pre><code class="haskell">
-	ghci> not (True && True)
-	False
+ghci> not (True && True)
+False
 						</code></pre>
 
 						<p>Test for equality with <code>==</code> and inequality with <code>/=</code></p>
 
 						<pre><code class="haskell">
-	ghci> 5 == 5
-	True
-	ghci> 4 /= 4
-	False
+ghci> 5 == 5
+True
+ghci> 4 /= 4
+False
 						</code></pre>
 
 					</section>
@@ -235,8 +252,8 @@
 						<h4>Basic Functions</h4>
 						<p>In Haskell, functions are called by writing the function name, a space and then the parameters, separated by spaces.</p>
 						<pre><code class="haskell">
-	ghci> succ 8
-	9
+ghci> succ 8
+9
 						</code></pre>
 					</section>
 
@@ -252,10 +269,10 @@
 						</ul>
 						<p>Prefix functions can be written as infix with backticks:</p>
 						<pre><code class="haskell">
-	ghci> div 92 10
-	9
-	ghci> 92 `div` 10
-	9
+ghci> div 92 10
+9
+ghci> 92 `div` 10
+9
 						</code></pre>
 					</section>
 
@@ -265,10 +282,10 @@
 						<p>Function application has the highest precedence of all. What that means for us is that these two statements are equivalent.</p>	
 
 						<pre><code class="haskell">
-	ghci> succ 9 + max 5 4 + 1
-	16
-	ghci> (succ 9) + (max 5 4) + 1
-	16  
+ghci> succ 9 + max 5 4 + 1
+16
+ghci> (succ 9) + (max 5 4) + 1
+16  
 						</code></pre>
 					</section>
 
@@ -277,8 +294,12 @@
 						<h2>Question:</h2>
 						<p>What does the following yield and why?</p>
 						<pre><code class="haskell">
-	succ 9 * 10
+succ 9 * 10
 						</code></pre>
+					</section>
+					<section>
+						<h4>Basic Functions</h4>
+						<h2>Any Questions?</h2>
 					</section>
 				</section>
 
@@ -290,7 +311,7 @@
 						<h4>Loading and Compiling Haskell Files</h4>
 						<p>Open up your favorite text editor and punch in this function that takes a number and multiplies it by two.</p>
 						<pre><code class="haskell">
-	doubleMe x = x + x  
+doubleMe x = x + x  
 						</code></pre>
 						<p>Save it as <code>tutorial.hs</code> in the folder of your choice.</p>
 						<p>For ease of access’ sake, I have saved mine in c:\Haskell</p>
@@ -299,14 +320,14 @@
 						<h4>Loading and Compiling Haskell Files</h4>
 						<p>Navigate to where you saved the file, compile it, and then you can use the function.</p>
 						<pre><code class="haskell">
-	ghci> :cd c:\Haskell
-	ghci> :l tutorial
-	[1 of 1] Compiling Main ( tutorial.hs, interpreted )
-	Ok, modules loaded: Main.
-	ghci> doubleMe 2
-	4
-	ghci> doubleMe 9
-	18
+ghci> :cd c:\Haskell
+ghci> :l tutorial
+[1 of 1] Compiling Main ( tutorial.hs, interpreted )
+Ok, modules loaded: Main.
+ghci> doubleMe 2
+4
+ghci> doubleMe 9
+18
 						</code></pre>
 					</section>
 					<section>
@@ -317,9 +338,9 @@
 						<h4>Loading and Compiling Haskell Files</h4>
 						<p>Add the following code into tutorial.hs and compile.</p>
 						<pre><code class="haskell">
-	doubleSmallNumber x = if x > 100
-	then x
-	else x*2
+doubleSmallNumber x = if x > 100
+then x
+else x*2
 						</code></pre>
 						<p>The <code>else</code> part of Haskell’s <code>if</code> statement is mandatory, thus the <code>if</code> statement is an expression since it will always return a value and so can be plugged in anywhere!</p>
 						<pre><code class="haskell">
@@ -333,7 +354,84 @@
 						<h2>Lists</h2>
 					</section>
 					<section>
-						<h2>Questions:</h2>
+						<h4>Lists</h4>
+						<p>Lists are created like this:</p>
+						<pre><code class="haskell">
+ghci> let lostNumbers = [4,8,15,16,23,42]  
+ghci> lostNumbers  
+[4,8,15,16,23,42]
+ghci> let someString = "Some string"
+						</code></pre>
+						<p>Lists cannot have a mix of characters and numbers</p>
+						<p><b>Note 1:</b> We can use the <code>let</code> keyword to define a name right in GHCI. Doing <code>let a = 1</code> inside GHCI is the equivalent of writing <code>a = 1</code> in a script and then loading it.</p>
+						<p><b>Note 2:</b> Strings are just a list of characters</p>
+					</section>
+
+					<section>
+						<h4>Lists</h4>
+						<h3>List Concatenation</h3>
+						<p>Use <code>++</code> to put two lists together (goes through the complete list!)</p>
+						<pre><code class="haskell">
+ghci> [1,2,3,4] ++ [6,7,8]
+[1,2,3,4,6,7,8]
+ghci> "Hello" ++ " " ++ "world"
+"Hello world"
+						</code></pre>
+						<p>Use <code>:</code> to prepend LHS to RHS list</p>
+						<pre><code class="haskell">
+ghci> 'A':" SMALL CAT"
+"A SMALL CAT"
+ghci> 1:[2,3,4,5]
+[1,2,3,4,5]
+ghci> 1:2:3:[]
+[1,2,3]
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Lists</h4>
+						<h2>Question:</h2>
+						<p>What are the differences between these?</p>
+						<pre><code class="haskell">
+[]
+[[]]
+[[],[],[]]
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Lists</h4>
+						<p>If you want to get an element out of a list by index, use !!. The indices start at 0.</p>
+						<pre><code>
+ghci> ”Software Freedom Day” !! 6  
+‘r’  
+ghci> [9.4,33.2,96.2,11.2,23.25] !! 1  
+33.2
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Lists</h4>
+						<p>Use <code><</code>, <code><=</code>, <code>></code> and <code>>=</code> to lexographically compare lists</p>
+						<pre><code>
+ghci> [3,2,1] > [2,1,0]  
+True  
+ghci> [3,2,1] > [2,10,100]  
+True  
+ghci> [3,4,2] > [3,4]  
+True  
+ghci> [3,4,2] > [2,4]  
+True  
+ghci> [3,4,2] == [3,4,2]  
+True  
+						</code></pre>
+
+						<p>Comparison goes from left to right, element by element.</p>
+					</section>
+
+					<section>
+						<h4>Lists</h4>
+						<h2>Any Questions?</h2>
 					</section>
 				</section>
 
@@ -342,7 +440,189 @@
 						<h2>List Operations</h2>
 					</section>
 					<section>
-						<h2>Questions:</h2>
+						<h4>List Operations</h4>
+						<img src="http://i.imgur.com/mIgNuwy.png" />
+						<ul>
+							<li><code>head [5,4,3]</code> : first element of a list (<code>5</code>)</li>
+							<li><code>tail [5,4,3]</code> : tail without head (<code>[4,3]</code>)</li>
+							<li><code>last [5,4,3]</code> : last element of a list (<code>3</code>)</li>
+							<li><code>init [5,4,3]</code> : list without tail (<code>[5,4]</code>)</li>
+						</ul>
+					</section>
+					<section>
+						<h4>List Operations</h4>
+						<ul>
+							<li><code>length [5,4,3]</code> : number of elements (<code>3</code>)</li>
+							<li><code>null [5,4,3]</code> : tests if list is empty (<code>False</code>)</li>
+							<li><code>reverse [5,4,3]</code> : reverse list (<code>[3,4,5]</code>)</li>
+							<li><code>take 3 [5,4,3,2,1]</code> : extract number of elements from list start (<code>[5,4,3]</code>)</li>
+							<li><code>drop 3 [5,4,3,2,1]</code> : drop first elements of a list (<code>[2,1]</code>)</li>
+						</ul>
+					</section>
+					<section>
+						<h4>List Operations</h4>
+						<ul>
+							<li><code>maximum [5,4,3,2,1]</code> : maximum of orderable list (<code>5</code>)</li>
+							<li><code>minimum [5,4,3,2,1]</code> : minimum of orderable list (<code>1</code>)</li>
+							<li><code>sum [5,4,3]</code> : sum of number list (<code>12</code>)</li>
+							<li><code>product [5,4,3]</code> : product of number list (<code>60</code>)</li>
+						</ul>
+					</section>
+					<section>
+						<h4>List Operations</h4>
+						<ul>
+							<li><code>4 `elem` [5,4,3]</code> : tests if an element is in list, usually infixed (<code>True</code>)</li>
+							<li><code>take 10 (cycle [1,2,3])</code> : repeat the list elements (<code>[1,2,3,1,2,3,1,2,3,1]</code>)</li>
+							<li><code>take 10 (repeat 5)</code> : repeat the element (<code>[5,5,5,5,5,5,5,5,5,5]</code>)</li>
+							<li><code>replicate 3 10</code> : repeat the element a number of times (<code>[10,10,10]</code>)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h4>List Operations</h4>
+						<h2>Exercises:</h2>
+						<p>Eliminate consecutive duplicates of list elements such that:</p>
+						<pre><code class="haskell">
+ghci> compress "aaaabccaadeeee“
+"abcade"
+						</code></pre>
+						<p>Find out whether a list is a palindrome. A palindrome can be read forward or backward; e.g. (x a m a x).</p>
+						<pre><code class="haskell">
+ghci> isPalindrome [1,2,3]
+False
+ghci> isPalindrome "madamimadam"
+True
+ghci> isPalindrome [1,2,4,8,16,8,4,2,1]
+True
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>List Operations</h4>
+						<h2>Any Questions?</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>List Ranges</h2>
+					</section>
+					<section>
+						<h4>List Ranges</h4>
+						<p>To make a list containing all the natural numbers from 1 to 20, you just write <code>[1..20]</code></p>
+						<pre><code class="haskell">
+ghci> [1..20]  
+[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]  
+ghci> ['a'..'z']  
+"abcdefghijklmnopqrstuvwxyz"  
+ghci> ['K'..'Z']  
+"KLMNOPQRSTUVWXYZ"
+						</code></pre>
+					</section>
+					<section>
+						<h4>List Ranges</h4>
+						<p>You can define the step size of a range:</p>
+						<pre><code class="haskell">
+ghci> [2,4..20]
+([2,4,6,8,10,12,16,18,20])
+ghci> [3,6..20]
+([3,6,9,12,15,18])
+ghci> [20,19..15]
+([20,19,18,17,16,15])
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>List Ranges</h4>
+						<p>You can also use ranges to make infinite lists by just not specifying an upper limit.</p>
+						<p>For now, let's examine how you would get the first 24 multiples of 13. Sure, you could do <code>[13,26..24*13]</code>. But there's a better way:</p>
+						<pre><code class="haskell">
+ghci> take 24 [13,26..]
+						</code></pre>
+						<p>Because Haskell is lazy, it won't try to evaluate the infinite list immediately because it would never finish. It'll wait to see what you want to get out of that infinite lists.</p>
+					</section>
+
+					<section>
+						<h4>List Ranges</h4>
+						<h2>Any Questions?</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>List Comprehension</h2>
+					</section>
+					<section>
+						<h4>List Comprehension</h4>
+						<p>Have you seen these kinds of equations in your Math class?</p>
+						<img src="http://i.imgur.com/P1s3VO0.png" height="80"/>
+						<p>This is a basic comprehension for a set that contains the first ten even natural numbers.</p>
+						<p>The part before the pipe is called the output function, x is the variable, N is the input set and x <= 10 is the predicate.</p>
+						<p>That means that the set contains the doubles of all natural numbers that satisfy the predicate.</p>
+					</section>
+					<section>
+						<h4>List Comprehension</h4>
+						<img src="http://i.imgur.com/P1s3VO0.png" height="80"/>
+						<p>In Haskell, this would be</p>
+						<pre><code class="haskell">
+ghci> [x*2 | x <- [1..10]]  
+[2,4,6,8,10,12,14,16,18,20]  
+						</code></pre>
+						<p>Let's say we want only the elements which, doubled, are greater than or equal to 12. We will then add a <b>Predicate</b></p>
+						<pre><code class="haskell">
+ghci> [x*2 | x <- [1..10], x*2 >= 12]  
+[12,14,16,18,20]  
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>List Comprehension</h4>
+						<p>You can have more than 1 predicate</p>
+						<pre><code class="haskell">
+ghci> [ x | x <- [10..20], x /= 13, x /= 15, x /= 19]  
+[10,11,12,14,16,17,18,20]
+						</code></pre>
+						<p>Comprehensions can be put inside a function</p>
+						<pre><code class="haskell">
+boomBangs xs = [ if x < 10 then "BOOM!" else "BANG!" | 
+		x <- xs, odd x]
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>List Comprehension</h4>
+						<p>Comprehensions can draw from several lists, which multiplies the lengths</p>
+						<pre><code class="haskell">
+ghci> [ x*y | x <- [2,3], y <- [3,4,5]]
+([6,8,10,9,12,15])
+						</code></pre>
+						<p><code>_</code> is a dummy placeholder for a unused value</p>
+						<pre><code class="haskell">
+length' xs = sum [1 | _ <- xs]
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>List Comprehension</h4>
+						<p>List comprehensions can be nested</p>
+						<pre><code class="haskell">
+ghci> let set = [[1,2,3],[2,3,4],[4,5]]
+ghci> [ [x | x <- subset, even x] | subset <- set]
+[[2],[2,4],[4]]
+						</code></pre>
+					</section>
+					<section>
+						<p>Try this!</p>
+						<pre><code class="haskell">
+ghci> let nouns = ["hobo","frog","pope"]  
+ghci> let adjectives = ["lazy","grouchy","scheming"]  
+ghci> [adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns]  
+
+						</code></pre>
+					</section>
+					<section>
+						<h4>List Comprehension</h4>
+						<h2>Any Questions?</h2>
 					</section>
 				</section>
 
@@ -351,7 +631,308 @@
 						<h2>Tuples</h2>
 					</section>
 					<section>
-						<h2>Questions:</h2>
+						<h4>Tuples</h4>
+						<p>Tuples can contain several types, but for the type of two Tuples to be the same, the number and types of their elements must match.</p>
+						<pre><code class="haskell">
+(1,2)
+[(1,2), (3,2), (4,9)]
+[("Johnny", "Walker", 38), ("Kate", "Middleton", 27)]
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Tuples</h4>
+						<p>Tuple-related functions.</p>
+						<ul>
+						    <li><code>fst (8,11)</code> : returns first component of a pair (<code>8</code>)</li>
+						    <li><code>snd (9,"Hey")</code> : returns second component of a pair (<code>"Hey"</code>)</li>
+						    <li><code>zip [1..3] ['a'..'c']</code> : combine two lists to a list of tuples ( <code>[(1,'a'), (2,'b'), (3,'c')]</code> )</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Tuples</h4>
+						<h2>Any Questions?</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Combining List Comprehension and Tuples</h2>
+					</section>
+					<section>
+						<h4>Combining List Comprehension and Tuples</h4>
+						<img src="http://i.imgur.com/Epan5An.png" />
+						<p>Which right triangle that has integers for all sides and all sides equal to or smaller than 10 has a perimeter of 24?</p>
+					</section>
+					<section>
+						<h4>Combining List Comprehension and Tuples</h4>
+						<p>Generate tuples with all combinations from 1 to 10.</p>
+						<pre class="fragment"><code class="haskell">
+triangles = [ (a,b,c) | c <- [1..10], b <- [1..10], a <- [1..10] ]
+						</code></pre>
+						<p class="fragment">But these are not necessarily triangles! Plug in the Pythagorean formula to get triangles!</p>
+						<pre class="fragment"><code class="haskell">
+rightTriangles = [ (a,b,c) |  c <- [1..10], b <- [1..10],
+	a <- [1..10], a^2 + b^2 == c^2]  
+						</code></pre>
+					</section>
+					<section>
+						<h4>Combining List Comprehension and Tuples</h4>
+						<p>We seem to be generating the same triangles. Lets filter them out.</p>
+						<pre class="fragment"><code class="haskell">
+rightTriangles = [ (a,b,c) |  c <- [1..10], b <- [1..c],
+		a <- [1..a], a^2 + b^2 == c^2]  
+						</code></pre>
+						<p class="fragment">That works great! Now to get the triangle with a perimeter of 24:</p>
+						<pre class="fragment"><code class="haskell">
+rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c], 
+		a <- [1..b], 
+		a^2 + b^2 == c^2, 
+		a+b+c == 24] 
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h3>Anyone wanna take a break?</h3>
+					<h4>Or maybe ask some questions?</h4>
+				</section>
+
+				<section>
+					<section>
+						<h2>Types</h2>
+					</section>
+
+					<section>
+						<h4>Types</h4>
+						<p>Types always start with an uppercase letter</p>
+						<p>Use <code>:t</code> to get a type of something</p>
+						<pre><code class="haskell">
+ghci> :t 'a'
+'a' :: Char
+ghci> :t "HELLO"
+"HELLO" :: [Char]
+ghci> :t (True, 'a')
+(True,'a') :: (Bool, Char)
+						</code></pre>
+					</section>
+					<section>
+						<h4>Types</h4>
+						<p>When writing our own functions, we can choose to give them an explicit type declaration.</p>
+						<p><small>All functions should use a type declaration with :: ("has type of"). Multiple arguments are also separeted with -> just like the type declaration itself.</small></p>
+						<pre><code class="haskell">
+removeUppercase :: [Char] -> [Char]
+removeUppercase :: String -> String --(same as above)
+
+addThree :: Int -> Int -> Int -> Int
+addThree x y z = x + y + z 
+						</code></pre>
+						<p>This is generally considered to be good practice except when writing very short functions.</p>
+						<p>From here on, we'll give all the functions that we make type declarations.</p>
+					</section>
+
+					<section>
+						<h4>Types</h4>
+						<p>Here are the common types</p>
+						<ul>
+							<li><code>Int</code> : Integer</li> 
+							<li><code>Integer</code> : Integer (big)</li> 
+							<li><code>Float</code> : Floating point</li> 
+							<li><code>Double</code> : Floating point with double precision</li> 
+							<li><code>Bool</code> : Boolean</li> 
+							<li><code>Char</code> : Character</li> 
+							<li>Tuples</li> 
+							<li><code>Ordering</code> : Can be <code>GT</code>, <code>LT</code> or <code>EQ</code></li> 
+						</ul>
+					</section>
+					<section>
+						<h4>Types</h4>
+						<p><b>Type variables</b> can be used in function declarations. They stand for a type. Without a class constraint they mean "any type"</p>
+						<pre><code class="haskell">
+ghci> :t head
+head :: [a] -> a
+ghci> :t fst
+fst :: (a, b) -> a
+						</code></pre>
+					</section>
+					<section>
+						<h4>Types</h4>
+						<p style="font-size: 30px;"><b>Typeclasses </b> are like interfaces for types. If a type is part of a typeclass it implements that class' behavior. The <code>=></code> symbol separates the <b>class constraint</b> from the declaration:</p>
+						<pre><code class="haskell">
+ghci> :t (==)
+(==) :: (Eq a) => a -> a -> Bool
+						</code></pre>
+
+						<ul class="typeclasses">
+						    <li><code>Eq</code> : supports equality testing</li>
+						    <li><code>Ord</code> : can have ordering</li>
+						    <li><code>Show</code> : can be presented as string</li>
+						    <li><code>Read</code> : can be read from a string</li>
+						    <li><code>Enum</code> : ordered type which can be enumerated</li>
+						    <li><code>Bounded</code> : have an upper and lower bound</li>
+						    <li><code>Num</code> : can act like a number</li>
+						    <li><code>Integral</code> : can act like an integral number</li>
+						    <li><code>Floating</code> : can act like a floating point number</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Syntax in Functions</h2>
+					</section>
+					<section>
+						<h4>Syntax in Functions - Pattern Matching</h4>
+						<p>Functions can be defined with pattern matching.</p>
+						<p>Patterns make sure that the input matches a specified pattern.</p>
+						<p>The first matching pattern is executed.</p>
+						<p>There should always be a catch-all pattern at the end.</p>
+					</section>
+
+					<section>
+						<h4>Syntax in Functions - Pattern Matching</h4>
+						<pre><code class="haskell">
+lucky :: (Integral a) => a -> String  
+lucky 7 = "LUCKY NUMBER SEVEN!"  
+lucky x = "Sorry, you're out of luck, pal!"   
+
+factorial :: (Integral a) => a -> a  
+factorial 0 = 1  
+factorial n = n * factorial (n - 1)
+
+addVectors :: (Num a) => (a, a) -> (a, a) -> (a, a)  
+addVectors (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
+
+head' :: [a] -> a  
+head' [] = error "Can't call head on an empty list, dummy!"  
+head' (x:_) = x   
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Syntax in Functions - Pattern Matching</h4>
+						<p>Using Typeclasses in functions</p>
+						<pre><code class="haskell">
+-- Show is any type that can be presented as string
+tell :: (Show a) => [a] -> String  
+tell [] = "The list is empty"  
+tell (x:[]) = "The list has one element: " ++ show x  
+tell (x:y:[]) = "The list has two elements: " ++ show x ++ " and " ++ show y  
+tell (x:y:_) = "This list is long. The first two elements are: " ++ show x ++ " and " ++ show y  
+
+-- Num is any type that can act like a number
+length' :: (Num b) => [a] -> b  
+length' [] = 0  
+length' (_:xs) = 1 + length' xs
+
+sum' :: (Num a) => [a] -> a  
+sum' [] = 0  
+sum' (x:xs) = x + sum' xs  
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Syntax in Functions - Pattern Matching</h4>
+						<p>The <b>as pattern</b> is used to reference the "whole thing": Put a name followed by <code>@</code> in front of the pattern:</p>
+						<pre><code class="haskell">
+capital :: String -> String  
+capital "" = "Empty string, whoops!"  
+capital all@(x:xs) = "The first letter of " ++ all ++ " is " ++ [x]
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Syntax in Functions - Guards</h4>
+						<p><b>Guards</b> are similar to if statements and check for boolean conditions. There's no <code>=</code> after the function name:</p>
+						<pre><code class="haskell">
+bmiTell :: (RealFloat a) => a -> String  
+bmiTell bmi  
+  | bmi <= 18.5 = "You're underweight, you emo, you!"  
+  | bmi <= 25.0 = "You're supposedly normal. Pffft, I bet you're ugly!"  
+  | bmi <= 30.0 = "You're fat! Lose some weight, fatty!"  
+  | otherwise   = "You're a whale, congratulations!"
+						</code></pre>
+						<p>Guards can be combined with patterns: If all guards of a function evaluate to <code>False</code>, evaluation falls through to the next pattern</p>
+					</section>
+					<section>
+						<h4>Syntax in Functions - Guards</h4>
+						<p>Guards can have as many parameters as we want</p>
+						<pre><code class="haskell">
+bmiTell :: (RealFloat a) => a -> a -> String  
+bmiTell weight height  
+  | weight / height ^ 2 <= 18.5 = "You're underweight, you emo, you!"  
+  | weight / height ^ 2 <= 25.0 = "You're supposedly normal. Pffft, I bet you're ugly!"  
+  | weight / height ^ 2 <= 30.0 = "You're fat! Lose some weight, fatty!"  
+  | otherwise                 = "You're a whale, congratulations!"  
+
+max' :: (Ord a) => a -> a -> a  
+max' a b   
+  | a > b     = a  
+  | otherwise = b  
+
+myCompare :: (Ord a) => a -> a -> Ordering  
+a `myCompare` b  
+  | a > b     = GT  
+  | a == b    = EQ  
+  | otherwise = LT  
+						</code></pre>
+					</section>
+					<section>
+						<h4>Syntax in Functions - Guards</h4>
+						<p>Guards can use a <b>where</b> block to define functions that are only visible inside the guard function</p>
+						<pre><code class="haskell">
+bmiTell :: (RealFloat a) => a -> a -> String  
+bmiTell weight height  
+  | bmi <= skinny = "You're underweight, you emo, you!"  
+  | bmi <= normal = "You're supposedly normal. Pffft, I bet you're ugly!"  
+  | bmi <= fat    = "You're fat! Lose some weight, fatty!"  
+  | otherwise     = "You're a whale, congratulations!"  
+  where bmi = weight / height ^ 2  
+        skinny = 18.5  
+        normal = 25.0  
+        fat = 30.0  
+						</code></pre>
+					</section>
+					<section>
+						<h4>Syntax in Functions - Guards</h4>
+						<p>Combined with a pattern match</p>
+						<pre><code class="haskell">
+bmiTell :: (RealFloat a) => a -> a -> String  
+bmiTell weight height  
+  | bmi <= skinny = "You're underweight, you emo, you!"  
+  | bmi <= normal = "You're supposedly normal. Pffft, I bet you're ugly!"  
+  | bmi <= fat    = "You're fat! Lose some weight, fatty!"  
+  | otherwise     = "You're a whale, congratulations!"  
+  where bmi = weight / height ^ 2  
+    (skinny, normal, fat) = (18.5, 25.0, 30.0)  
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Syntax in Functions - Guards</h4>
+						<p>A few more examples</p>
+						<pre><code class="haskell">
+-- using _
+initials :: String -> String -> String  
+initials firstname lastname = [f] ++ ". " ++ [l] ++ "."  
+  where (f:_) = firstname  
+        (l:_) = lastname    
+
+-- using list comprehension
+calcBmis :: (RealFloat a) => [(a, a)] -> [a]  
+calcBmis xs = [bmi w h | (w, h) <- xs]  
+  where bmi weight height = weight / height ^ 2
+						</code></pre>
+					</section>
+					<section>
+						<h4>Syntax in Functions - Let Bindings</h4>
+						<p>Let bindings are similar to where bindings. Their form is <code>let &lt;bindings&gt; in &lt;expression&gt;</code>.</p>
+						<pre><code class="haskell">
+cylinder :: (RealFloat a) => a -> a -> a  
+cylinder r h = 
+  let sideArea = 2 * pi * r * h  
+      topArea = pi * r ^2  
+  in  sideArea + 2 * topArea  
+						</code></pre>
 					</section>
 				</section>
 			</div>
@@ -370,7 +951,7 @@
 				history: true,
 				center: true,
 
-				transition: 'fade', // none/fade/slide/convex/concave/zoom
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
 				dependencies: [
