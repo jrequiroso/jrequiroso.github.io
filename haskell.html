@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Haskell - A Gentle Introduction</title>
 
 		<meta name="description" content="A Gentle Introduction to Programming in Haskell">
 		<meta name="author" content="John Requiroso">
@@ -15,10 +15,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style type="text/css">
+			.reveal section img { 
+			    border: none;
+			    box-shadow: none; 
+			}
+		</style>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -39,8 +46,313 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>A Gentle Introduction to Programming in Haskell</h1>
+					<img src="http://i.imgur.com/SvWSZjg.png" />
+					<h1>Haskell</h1>
+					<h3>A Gentle Introduction</h3>
 					<p><small>Created by John Requiroso / <a href="http://twitter.com/kazuo1231">@kazuo1231</a></small></p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Haskell is...</h2>
+					</section>
+					<section>
+						<h4>Haskell is...</h4>
+						<ul>
+							<li>a lazy, functional programming language created in the late 1980’s by a committee of academics.</li>
+							<li>Based on Lambda Calculus</li>
+						</ul>
+						<p><img src="http://i.imgur.com/7uY3URy.png"/></p>
+					</section>
+					<section>
+						<h4>Haskell is Based on Lambda Calculus</h4>
+						<table>
+							<thead>
+								<tr>
+									<th>Derived Syntax</th>
+									<th>Core Syntax</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>f x = expr</td>
+									<td>f = λx → expr</td>
+									<td>-- lambda</td>
+								</tr>
+								<tr>
+									<td>(x *)</td>
+									<td>λy → x * y</td>
+									<td>-- sections</td>
+								</tr>
+								<tr>
+									<td>(* y)</td>
+									<td>λx → x * y</td>
+									<td>-- sections</td>
+								</tr>
+								<tr>
+									<td>(*)</td>
+									<td>λx y → x * y</td>
+									<td>-- sections</td>
+								</tr>
+								<tr>
+									<td>x `times` y</td>
+									<td>times x y</td>
+									<td>-- infix func</td>
+								</tr>
+								<tr>
+									<td>f $ g $ h x</td>
+									<td>f (g (h x))</td>
+									<td>-- parens</td>
+								</tr>
+								<tr>
+									<td>(f . g . h) x</td>
+									<td>f (g (h x))</td>
+									<td>-- compose</td>
+								</tr>
+								<tr>
+									<td>do a; b; c</td>
+									<td>a >>= b >>= c</td>
+									<td>-- I/O bind</td>
+								</tr>
+							</tbody>
+								
+						</table>
+					</section>
+					<section>
+						<h4>Haskell is...</h4>
+						<h2>Functional</h2>
+						<ul>
+							<li>Functions are first-class, that is, functions are values which can be used in exactly the same ways as any other sort of value.</li>
+							<li>The meaning of Haskell programs is centered around evaluating expressions rather than executing instructions.</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Haskell is...</h4>
+						<h2>Pure</h2>
+						<ul>
+							<li>No mutation! Everything (variables, data structures…) is <i>immutable</i>.</li>
+							<li>Expressions never have "side effects" (like updating global variables or printing to the screen).</li>
+							<li>Calling the same function with the same arguments results in the same output every time. Programs are <i>deterministic</i>.</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Haskell is...</h4>
+						<h2>Lazy</h2>
+						<ul>
+							<li>Expressions are not evaluated until their results are actually needed</li>
+							<li>It is easy to define a new control structure just by defining a function.</li>
+							<li>It is possible to define and work with infinite data structures.</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Haskell is Lazy Example</h4>
+						<h3>C/Java</h3>
+						<pre><code class="java">
+	int acc = 0;
+	for ( int i = 0; i < lst.length; i++ ) { 
+	    acc = acc + 3 * lst[i];
+	}
+						</code></pre>
+						<h3>Haskell</h3>
+						<pre><code class="haskell">
+	sum (map (3*) lst)
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Haskell is...</h4>
+						<h2>Statically Typed</h2>
+						<ul>
+							<li>Every Haskell expression has a type, and types are all checked at <i>compile-time</i>. Programs with type errors will not even compile, much less run.</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Basic Haskell Syntax</h2>
+					</section>
+					<section>
+						<h4>Basic Haskell Syntax</h4>
+						<h2>Starting Out</h2>
+						<ul>
+							<li>Install and run ghci (https://www.haskell.org/platform)</li>
+							<li>The prompt here is <code>Prelude></code> but because it can get longer when you load stuff into the session, we're going to use <code>ghci></code>. If you want to have the same prompt, just type in <code>:set prompt "ghci> "</code>.</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Basic Haskell Syntax</h4>
+						<p>Simple Arithmetic is what you would expect it to be</p>
+						<pre><code class="haskell">
+	ghci> 2 + 15
+	17
+	ghci> 49 * 100
+	4900
+	ghci> 1892 - 1472
+	420
+	ghci> 5 / 2
+	2.5
+	ghci> 50 * 100 - 4999
+	1
+	ghci> 50 * (100 - 4999)
+	-244950
+						</code></pre>
+					</section>
+					<section>
+						<h4>Basic Haskell Syntax</h4>
+						<p>Wrap negative numbers in parentheses</p>
+						<pre><code class="haskell">
+	ghci> 5 * (-3)
+	-15
+						</code></pre>
+						
+						<p>Boolean algebra with <code>True</code>, <code>False</code>, <code>not</code>, <code>&amp;&amp;</code> and <code>||</code></p>
+						
+						<pre><code class="haskell">
+	ghci> not (True && True)
+	False
+						</code></pre>
+
+						<p>Test for equality with <code>==</code> and inequality with <code>/=</code></p>
+
+						<pre><code class="haskell">
+	ghci> 5 == 5
+	True
+	ghci> 4 /= 4
+	False
+						</code></pre>
+
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Basic Functions</h2>
+					</section>
+
+					<section>
+						<h4>Basic Functions</h4>
+						<p>In Haskell, functions are called by writing the function name, a space and then the parameters, separated by spaces.</p>
+						<pre><code class="haskell">
+	ghci> succ 8
+	9
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Basic Functions</h4>
+						<p>Most functions are prefix functions:</p>
+						<ul>
+						    <li><code>succ 8</code> : successor (<code>9</code>)</li>
+						    <li><code>min 3 4</code> : minimum of 2 values (<code>3</code>)</li>
+						    <li><code>max 4 5</code> : maximum of 2 values (<code>5</code>)</li>
+						    <li><code>div 13 6</code> : integral division of 2 integers (<code>2</code>)</li>
+						    <li><code>odd 5</code> : tests if number is odd (<code>True</code>)</li>
+						</ul>
+						<p>Prefix functions can be written as infix with backticks:</p>
+						<pre><code class="haskell">
+	ghci> div 92 10
+	9
+	ghci> 92 `div` 10
+	9
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Basic Functions</h4>
+						<h2>Function Precedence</h2>
+						<p>Function application has the highest precedence of all. What that means for us is that these two statements are equivalent.</p>	
+
+						<pre><code class="haskell">
+	ghci> succ 9 + max 5 4 + 1
+	16
+	ghci> (succ 9) + (max 5 4) + 1
+	16  
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Basic Functions</h4>
+						<h2>Question:</h2>
+						<p>What does the following yield and why?</p>
+						<pre><code class="haskell">
+	succ 9 * 10
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Loading and Compiling Haskell Files</h2>
+					</section>
+					<section>
+						<h4>Loading and Compiling Haskell Files</h4>
+						<p>Open up your favorite text editor and punch in this function that takes a number and multiplies it by two.</p>
+						<pre><code class="haskell">
+	doubleMe x = x + x  
+						</code></pre>
+						<p>Save it as <code>tutorial.hs</code> in the folder of your choice.</p>
+						<p>For ease of access’ sake, I have saved mine in c:\Haskell</p>
+					</section>
+					<section>
+						<h4>Loading and Compiling Haskell Files</h4>
+						<p>Navigate to where you saved the file, compile it, and then you can use the function.</p>
+						<pre><code class="haskell">
+	ghci> :cd c:\Haskell
+	ghci> :l tutorial
+	[1 of 1] Compiling Main ( tutorial.hs, interpreted )
+	Ok, modules loaded: Main.
+	ghci> doubleMe 2
+	4
+	ghci> doubleMe 9
+	18
+						</code></pre>
+					</section>
+					<section>
+						<h4>Loading and Compiling Haskell Files</h4>
+						<p>From this point forward, any code without the <code>ghci></code> prompt will be added into the hs file we created and then compiled</p>
+					</section>
+					<section>
+						<h4>Loading and Compiling Haskell Files</h4>
+						<p>Add the following code into tutorial.hs and compile.</p>
+						<pre><code class="haskell">
+	doubleSmallNumber x = if x > 100
+	then x
+	else x*2
+						</code></pre>
+						<p>The <code>else</code> part of Haskell’s <code>if</code> statement is mandatory, thus the <code>if</code> statement is an expression since it will always return a value and so can be plugged in anywhere!</p>
+						<pre><code class="haskell">
+	doubleSmallNumber' x = (if x > 100 then x else x*2) + 1
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Lists</h2>
+					</section>
+					<section>
+						<h2>Questions:</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>List Operations</h2>
+					</section>
+					<section>
+						<h2>Questions:</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Tuples</h2>
+					</section>
+					<section>
+						<h2>Questions:</h2>
+					</section>
 				</section>
 			</div>
 		</div>
