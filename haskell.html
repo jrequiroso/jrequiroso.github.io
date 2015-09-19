@@ -55,22 +55,32 @@
 					<img src="http://i.imgur.com/SvWSZjg.png" />
 					<h1>Haskell</h1>
 					<h3>A Gentle Introduction</h3>
-					<p style="text-align:center;"><small>Created by John Requiroso / <a href="http://twitter.com/kazuo1231">@kazuo1231</a></small></p>
+					<p style="text-align:center;">
+						<small>
+							Created by John Requiroso / <a href="http://twitter.com/kazuo1231">@kazuo1231</a><br/>
+							This presentation is available on <a href="http://jrequiroso.github.io/haskell">jrequiroso.github.io/haskell</a>
+						</small>
+					</p>
 				</section>
 				<section>
 					<h2>Who am I?</h2>
 					<ul>
 						<li>John Requiroso or JR</li>
 						<li>Senior Web Developer, RedLemon Digital Media</li>
+						<li>28 years old</li>
 						<li>Developers Connect (DevCon PH) CDeO Representative</li>
 						<li>Not an expert. I just like Lambda Calculus.</li>
 					</ul>
 				</section>
 				<section>
-					<section>
-						<h4>What do you think about Haskell?</h4>
-						<img src="http://i.imgur.com/qGVkj2W.jpg" />
-					</section>
+					<h2>Reference:</h2>
+					<img src="img/newsplash.png" height="300"/><br/>
+					<p><a href="http://www.learnyouahaskell.com">Learn You a Haskell for Great Good</a></p>
+					<p>We will barely scratch the surface of Haskell</p>
+				</section>
+				<section>
+					<h4>What do you think about Haskell?</h4>
+					<img src="http://i.imgur.com/qGVkj2W.jpg" />
 				</section>
 				<section>
 					<h2>Quote:</h2>
@@ -86,10 +96,22 @@
 					</section>
 					<section>
 						<h4>Haskell is...</h4>
+						<p>a lazy, functional programming language created in the late 1980’s by a committee of academics.</p>					
 						<ul>
-							<li>a lazy, functional programming language created in the late 1980’s by a committee of academics.</li>
-							<li>Based on Lambda Calculus</li>
+							<li>MIT</li>
+							<li>Chalmers University</li>
+						    <li>Mitre Corp</li>
+						    <li>Victoria University of Wellington</li>
+						    <li>Simon Fraser University</li>
+						    <li>University of Cambridge</li>
+						    <li>Yale University</li>
+						    <li>University of Glasgow</li>
+						    <li>Microsoft Research Ltd</li>
 						</ul>
+					</section>
+					<section>
+						<h4>Haskell is...</h4>
+						<h2>Based on Lambda Calculus</h2>
 						<p><img src="http://i.imgur.com/7uY3URy.png"/></p>
 					</section>
 					<section>
@@ -450,12 +472,7 @@ True  
 
 					<section>
 						<h4>List Operations</h4>
-						<h2>Exercises:</h2>
-						<p>Eliminate consecutive duplicates of list elements such that:</p>
-						<pre><code class="haskell">
-ghci> compress "aaaabccaadeeee“
-"abcade"
-						</code></pre>
+						<h2>Exercise:</h2>
 						<p>Find out whether a list is a palindrome. A palindrome can be read forward or backward; e.g. (x a m a x).</p>
 						<pre><code class="haskell">
 ghci> isPalindrome [1,2,3]
@@ -521,6 +538,7 @@ ghci> take 24 [13,26..]
 				<section>
 					<section>
 						<h2>List Comprehension</h2>
+						<img src="http://i.imgur.com/JO2omik.gif"/>
 					</section>
 					<section>
 						<h4>List Comprehension</h4>
@@ -599,6 +617,7 @@ ghci> [adjective ++ " " ++ noun | adjective <- adjectives, noun <- n
 				<section>
 					<section>
 						<h2>Tuples</h2>
+						<img src="http://i.imgur.com/TmGD53s.jpg">
 					</section>
 					<section>
 						<h4>Tuples</h4>
@@ -669,6 +688,10 @@ rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c],
 				</section>
 
 				<section>
+					<section>
+						<h2>Types</h2>
+						<img src="http://i.imgur.com/LwjQNyW.jpg">
+					</section>
 					<section>
 						<h2>Types</h2>
 						<h4>Some of these are advanced concepts so we will just quickly skim through.</h4>
@@ -944,8 +967,100 @@ sum' [] = 0
 sum' (x:xs) = x + sum' xs  
 						</code></pre>
 					</section>
-				</section>
 
+				</section>
+				<section>
+					<section>
+						<h2>Let's create Quicksort!</h2>
+						<p>A sorted list is a list that has all the values smaller than (or equal to) the head of the list in front (and those values are sorted), then comes the head of the list in the middle and then come all the values that are bigger than the head (they're also sorted).</p>
+					</section>
+					<section>
+						<h4>Quicksort</h4>
+						<img src="http://i.imgur.com/AL8JB9g.png">
+					</section>
+					<section>
+						<h4>Quicksort</h4>
+						<p>Our quicksort function will accept an input which can be ordered (class type of Ord)</p>
+						<p>It will accept a list as input and will output a list</p>
+						<pre class="fragment roll-in"><code class="haskell">
+quicksort :: (Ord a) => [a] -> [a]  
+						</code></pre>
+						<p>The Edge Case: An empty list is a sorted list.</p>
+						<pre class="fragment roll-in"><code class="haskell">
+quicksort [] = []  
+						</code></pre>
+					</section>
+
+					<section>
+						<h4>Quicksort</h4>
+						<p>The function will take the first element of the list - the head</p>
+						<pre class="fragment roll-in"><code class="haskell">
+quicksort (x:xs)
+						</code></pre>
+						<p>The headless list will then be divided into two - greater than the head and less than the head</p>
+						<pre class="fragment roll-in"><code class="haskell">
+let smallerSorted = quicksort [a | a <- xs, a <= x]
+    biggerSorted = quicksort [a | a <- xs, a > x]
+						</code></pre>
+						<p>The head will then be placed in the middle of both of them</p>
+						<pre class="fragment roll-in"><code class="haskell">
+in  smallerSorted ++ [x] ++ biggerSorted
+						</code></pre>
+					</section>
+					<section>
+						<h4>Quicksort</h4>
+						<p>Putting everything together we get:</p>
+						<pre class="fragment roll-in"><code class="haskell">
+quicksort :: (Ord a) => [a] -> [a]  
+quicksort [] = []  
+quicksort (x:xs) =   
+    let smallerSorted = quicksort [a | a <- xs, a <= x]  
+        biggerSorted = quicksort [a | a <- xs, a > x]  
+    in  smallerSorted ++ [x] ++ biggerSorted  
+						</code></pre>
+						<p class="fragment roll-in">Let's give it a small test run to see if it appears to behave correctly.</p>
+						<pre class="fragment roll-in"><code class="haskell">
+ghci> quicksort [10,2,5,3,1,6,7,4,2,3,4,8,9]  
+[1,2,2,3,3,4,4,5,6,7,8,9,10]  
+ghci> quicksort "the quick brown fox jumps over the lazy dog"  
+"        abcdeeefghhijklmnoooopqrrsttuuvwxyz"  
+						</code></pre>
+					</section>
+					<section>
+						<h4>Quicksort</h4>
+						<p>This is what Quicksort looks like in most non-functional languages</p>
+						<pre class="fragment roll-in"><code class="haskell">
+void f(int a[], int lo, int hi) 
+{
+  int h, l, p, t;
+
+  if (lo < hi) {
+    l = lo;
+    h = hi;
+    p = a[hi];
+
+    do {
+      while ((l < h) && (a[l] <= p)) 
+          l = l+1;
+      while ((h > l) && (a[h] >= p))
+          h = h-1;
+      if (l < h) {
+          t = a[l];
+          a[l] = a[h];
+          a[h] = t;
+      }
+    } while (l < h);
+
+    a[hi] = a[l];
+    a[l] = p;
+
+    f( a, lo, l-1 );
+    f( a, l+1, hi );
+  }
+}
+						</code></pre>
+					</section>
+				</section>
 				<section>
 					<section>
 						<h2>Higher Order Functions</h2>
@@ -984,63 +1099,15 @@ ghci> map (\x -> x*x) [1..10]
 						<p>This notation is inspired from lambda calculus</p>
 						<p>λx.(x*x)</p>
 					</section>
-				</section>
-
+				</section>				
 				<section>
-					<section>
-						<h2>As a finale, let's create the Quicksort algorithm!</h2>
-						<p>A sorted list is a list that has all the values smaller than (or equal to) the head of the list in front (and those values are sorted), then comes the head of the list in the middle and then come all the values that are bigger than the head (they're also sorted).</p>
-					</section>
-					<section>
-						<h4>Quicksort</h4>
-						<img src="http://i.imgur.com/AL8JB9g.png">
-					</section>
-					<section>
-						<h4>Quicksort</h4>
-						<p>Our quicksort function will accept an input which can be ordered (class type of Ord)</p>
-						<p>It will accept a list as input and will output a list</p>
-						<pre><code class="haskell">
-	quicksort :: (Ord a) => [a] -> [a]  
-						</code></pre>
-						<p>The Edge Case: An empty list is a sorted list.</p>
-						<pre><code class="haskell">
-	quicksort [] = []  
-						</code></pre>
-					</section>
-
-					<section>
-						<h4>Quicksort</h4>
-						<p>The function will take the first element of the list - the head</p>
-						<p>The headless list will then be divided into two - greater than the head and less than the head</p>
-						<p>The head will then be placed in the middle of both of them</p>
-						<pre><code class="haskell">
-	quicksort (x:xs) =   
-	    let smallerSorted = quicksort [a | a <- xs, a <= x]  
-	        biggerSorted = quicksort [a | a <- xs, a > x]  
-	    in  smallerSorted ++ [x] ++ biggerSorted  
-						</code></pre>
-					</section>
-					<section>
-						<h4>Quicksort</h4>
-						<p>Putting everything together we get:</p>
-						<pre><code class="haskell">
-	quicksort :: (Ord a) => [a] -> [a]  
-	quicksort [] = []  
-	quicksort (x:xs) =   
-	    let smallerSorted = quicksort [a | a <- xs, a <= x]  
-	        biggerSorted = quicksort [a | a <- xs, a > x]  
-	    in  smallerSorted ++ [x] ++ biggerSorted  
-						</code></pre>
-						<p>Let's give it a small test run to see if it appears to behave correctly.</p>
-						<pre><code class="haskell">
-	ghci> quicksort [10,2,5,3,1,6,7,4,2,3,4,8,9]  
-	[1,2,2,3,3,4,4,5,6,7,8,9,10]  
-	ghci> quicksort "the quick brown fox jumps over the lazy dog"  
-	"        abcdeeefghhijklmnoooopqrrsttuuvwxyz"  
-						</code></pre>
-					</section>
+					<h4>Haskell forces you to think differently.</h4>
+					<p>Without the usual assignments, loops and control structures, you will find it hard to keep thinking in an iterative way.</p>
+					<p>It asks you to focus on <i>what</i> is done, not <i>how</i> it is done.</p>
+					<p>Elegant</p>
 				</section>
 				<section>
+					<h2>Quote:</h2>
 					<blockquote class="fragment roll-in">
 						A language that doesn’t affect the way you think about programming, is not worth knowing.
 					</blockquote>
@@ -1064,7 +1131,7 @@ ghci> map (\x -> x*x) [1..10]
 			// Full list of configuration options available at:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
+				controls: false,
 				progress: true,
 				history: true,
 				center: true,
