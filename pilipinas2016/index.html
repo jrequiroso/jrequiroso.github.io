@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<title>1st PiliPinas Debate 2016 Most Used Words</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="assets/data-tables/DT_bootstrap.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<style type="text/css">
+		body {
+		  padding-bottom: 20px;
+		}
+		.logo {
+			text-align: center;
+		}
+		.header {
+			padding-bottom: 20px;
+		}
+		.table {
+			width: 80%;
+		}
+		.navbar {
+		  margin-bottom: 20px;
+		}
+		.cloud-container {
+			text-align: center;
+			min-height: 300px;
+			max-height: 300px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+		}
+		.person h2, .minor-details, table th {
+			text-align: center;
+		}
+		.ajax-loader {
+			padding-top: 120px;
+		}
+		.dataTables_wrapper .dataTables_filter {
+			float: none;
+			text-align: inherit;
+		}
+	</style>
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <div class="container">
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">1st PiliPinas Debate 2016 Most Used Words</a>
+				</div>
+
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#" data-toggle="modal" data-target="#aboutModal"><i class="fa fa-question-circle fa-lg fa-fw"></i> About</a></li>
+						<li><a href="https://twitter.com/kazuo1231" target="_blank"><i class="fa fa-twitter-square fa-lg fa-fw"></i> Tweet me!</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div><!--/.container-fluid -->
+		</nav>
+
+    	<div class="row header">
+    		<div class="col-sm-4 logo">
+    			<img src="assets/img/pilipinas-debate-logo.jpg">
+    		</div>
+    		<div class="col-sm-8">
+	    		<h2>1st PiliPinas Debate 2016 Most Used Words</h2>
+	    		<p><b>Notes:</b></p>
+	    		<ul>
+	    			<li>Only the first debate's transcript is used. I will update this once I get a hold of a complete transcript of the second debate.</li>
+	    			<li>Click on the table headers to reorder the words.</li>
+	    		</ul>
+	    		<p>
+	    			<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+	    		</p>
+    		</div>
+    	</div>
+
+		<div class="row">
+			<div class="col-sm-4 person">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title">Mar Roxas</h2>
+					</div>
+					<div class="panel-body">
+						<div class="minor-details">
+							<p><b>Total Words Used</b>:  <span class="mar-roxas total-words">0</span> <br/>
+							<b>Unique Words Used</b>: <span class="mar-roxas unique-words">0</span></p>
+						</div>
+						<div class="row">
+							<div class="mar-roxas cloud-container"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 person">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title">Jejomar Binay</h2>
+					</div>
+					<div class="panel-body">
+						<div class="minor-details">
+							<p><b>Total Words Used</b>:  <span class="jejomar-binay total-words">0</span> <br/>
+							<b>Unique Words Used</b>: <span class="jejomar-binay unique-words">0</span></p>
+						</div>
+						<div class="row">
+							<div class="jejomar-binay cloud-container"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 person">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title">Rodrigo Duterte</h2>
+					</div>
+					<div class="panel-body">
+						<div class="minor-details">
+							<p><b>Total Words Used</b>:  <span class="rodrigo-duterte total-words">0</span> <br/>
+							<b>Unique Words Used</b>: <span class="rodrigo-duterte unique-words">0</span></p>
+						</div>
+						<div class="row">
+							<div class="rodrigo-duterte cloud-container"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4 person">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title">Grace Poe</h2>
+					</div>
+					<div class="panel-body">
+						<div class="minor-details">
+							<p><b>Total Words Used</b>:  <span class="grace-poe total-words">0</span> <br/>
+							<b>Unique Words Used</b>: <span class="grace-poe unique-words">0</span></p>
+						</div>
+						<div class="row">
+							<div class="grace-poe cloud-container"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 person">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title">Miriam Defensor Santiago</h2>
+					</div>
+					<div class="panel-body">
+						<div class="minor-details">
+							<p><b>Total Words Used</b>:  <span class="miriam-santiago total-words">0</span> <br/>
+							<b>Unique Words Used</b>: <span class="miriam-santiago unique-words">0</span></p>
+						</div>
+						<div class="row">
+							<div class="miriam-santiago cloud-container"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 person">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title">All Candidates</h2>
+					</div>
+					<div class="panel-body">
+						<div class="minor-details">
+							<p><b>Total Words Used</b>:  <span class="all-candidates total-words">0</span> <br/>
+							<b>Unique Words Used</b>: <span class="all-candidates unique-words">0</span></p>
+						</div>
+						<div class="row">
+							<div class="all-candidates cloud-container"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr />
+
+		<footer>
+			<p>&copy; 2016 Created by JR Requiroso</p>
+		</footer>
+    </div> <!-- /container -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">About This</h4>
+				</div>
+				<div class="modal-body">
+					<p>A quick hack I made just to see an overview of what words are used the most by the candidates during the first debate.</p>
+					<h3>How is it done?</h3>
+					<ol>
+						<li>Obtain the full transcript of the debate</li>
+						<li>Segregate the lines of each presidential candidate</li>
+						<li>Filter out punctuation and remove translations added by Rappler</li>
+						<li>Filter out stop words</li>
+						<li>Count word occurrences</li>
+						<li>Dynamically display the words in a table.</li>
+					</ol>
+					<h3>Resources:</h3>
+					<ul>
+						<li><a target="_blank" href="http://www.rappler.com/nation/politics/elections/2016/123307-cdo-presidential-debate-summary-highlights">Image from Rappler.com</a></li>
+						<li><a target="_blank" href="http://www.rappler.com/nation/politics/elections/2016/126034-transcript-first-presidential-debate-cagayan-de-oro">1st debate transcript from Rappler.com</a></li>
+					</ul>
+				</div>
+				<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/t/dt/dt-1.10.11/datatables.min.js" ></script>
+	<script type="text/javascript" src="assets/js/scripts.js"></script>
+</body>
+</html>
