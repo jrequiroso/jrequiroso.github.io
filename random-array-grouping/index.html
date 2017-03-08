@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Splitting Arrays into Randomized Groups</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style type="text/css">
+        body {
+            background-color: #ddd;
+        }
+        #groupings {
+            display: none;
+        }
+
+        #groupings td {
+            vertical-align: top;
+        }
+        .help {
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <section class="header text-center">
+            <h1>Splitting a Single Array into Multiple Arrays</h1>
+        </section>
+        <div class="row">
+            <div class="col-xs-3">
+
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <form>
+
+                            <div class="form-group">
+                                <label for="names">
+                                    Objects to Group <br> 
+                                    <i class="help"> Separate each with a newline</i>
+                                </label>
+
+                                <textarea id="names" 
+                                        name="names" 
+                                        rows="12" 
+                                        required="required" 
+                                        class="form-control" placeholder="Type in object names separated by a newline."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="groups">Groups to create</label>
+                                <div class="input-group">
+                                    <input class="form-control" 
+                                            type="number" 
+                                            id="groups" 
+                                            name="groups" 
+                                            placeholder="Number of Groups" 
+                                            required="required"
+                                            autocomplete="off"
+                                            value="8" >
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-primary" type="button" id="create-groups">Split Group</button>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="col-xs-9">
+                
+                <div class="row" id="groupings-output"></div>
+            
+            </div>
+        </div>
+    </div>
+
+<script src="js/jquery.min.js" ></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
