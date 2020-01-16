@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cliniq Apps Theme Development Guidelines</title>
+    <link rel="stylesheet" href="css/app.css" type="text/css" />
+    <style>
+        body {
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="h1">Cliniq Apps Theme Development Guidelines</h1>
+    <ol>
+        <li>After cloning the repo, do <code>npm install</code></li>
+        <li>The main css file is located in <code>resources\sass\app.scss</code> and variables are in <code>resources\sass\_variables.scss</code></li>
+        <li>Run <code>npm watch</code> to automatically compile any changes to the files above into a single file <code>public\css\app.css</code></li>
+        <li>To prepare the minified css file, run <code>npm run prod</code> and copy <code>public\css\app.css</code> to the cdn</li>
+        <li>Bootstrap 4 is currently being used so please refer to the <a href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">Documentation</a> .</li>
+    </ol>
+
+    <h2 class="h2">Blade files</h2>
+    <ul>
+        <li>Each page will have their own dedicated folder located in <code>\views\pages\*</code>.</li>
+        <li>Pages that will have this new style applied will extend <code>layout.app</code></li>
+        <li>If that specific page can be broken down, partials are highly encouraged.</li>
+        <li>If inserting unique styles into a page, use the <code> section('scripts') ... endsection </code> code. Same goes for <code> section('styles') ... endsection </code> </li>
+    </ul>
+    
+    <h1 class="h1">Style Guide</h1>
+    <h2 class="h2">Buttons</h2>
+    <p>
+        <button class="btn btn-primary">btn btn-primary</button>
+        <button class="btn btn-outline-primary">btn btn-outline-primary</button>
+    </p>
+    <p>
+        <button class="btn btn-secondary">btn btn-secondary</button>
+        <button class="btn btn-outline-secondary">btn btn-outline-secondary</button>
+    </p>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
