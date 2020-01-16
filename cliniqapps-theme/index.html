@@ -10,79 +10,117 @@
         body {
             padding: 30px;
         }
+        .h2, .h3 {
+            padding-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <h1 class="h1">Cliniq Apps Theme Development Guidelines</h1>
-    <ol>
-        <li>After cloning the repo, do <code>npm install</code></li>
-        <li>The main css file is located in <code>resources\sass\app.scss</code> and variables are in <code>resources\sass\_variables.scss</code></li>
-        <li>Run <code>npm watch</code> to automatically compile any changes to the files above into a single file <code>public\css\app.css</code></li>
-        <li>To prepare the minified css file, run <code>npm run prod</code> and copy <code>public\css\app.css</code> to the cdn</li>
-        <li>Bootstrap 4 is currently being used so please refer to the <a href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">Documentation</a> .</li>
-    </ol>
+    <div class="container">
+        <h1 class="h1">Cliniq Apps Theme Development Guidelines</h1>
+        <ol>
+            <li>After cloning the cliniqapps-web-laravel repo, do <code>npm install</code></li>
+            <li>The main css file is located in <code>resources\sass\app.scss</code> and variables are in <code>resources\sass\_variables.scss</code></li>
+            <li>Run <code>npm watch</code> to automatically compile any changes to the files above into a single file <code>public\css\app.css</code></li>
+            <li>To prepare the minified css file, run <code>npm run prod</code> and copy <code>public\css\app.css</code> to the cdn</li>
+            <li>Bootstrap 4 is currently being used so please refer to the <a href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">Documentation</a> .</li>
+        </ol>
 
-    <h2 class="h2">Blade files</h2>
-    <ul>
-        <li>Each page will have their own dedicated folder located in <code>\views\pages\*</code>.</li>
-        <li>Pages that will have this new style applied will extend <code>layout.app</code></li>
-        <li>If that specific page can be broken down, partials are highly encouraged.</li>
-        <li>If inserting unique styles into a page, use the <code> section('scripts') ... endsection </code> code. Same goes for <code> section('styles') ... endsection </code> </li>
-    </ul>
+        <h2 class="h2">Blade files</h2>
+        <ul>
+            <li>Each module will have their own dedicated folder located in <code>\views\pages\*</code>.</li>
+            <li>Modules that will have this new style applied will extend <code>layout.app</code></li>
+            <li>If that specific module can be broken down, partials are highly encouraged.</li>
+            <li>If inserting unique styles into a page, use the <code> section('scripts') ... endsection </code> code. Same goes for <code> section('styles') ... endsection </code> </li>
+            <li>Refrain from using inline styles and javascript code.</li>
+        </ul>
+        
+        <h1 class="h1">Style Guide</h1>
+        <h2 class="h2">Colors</h2>
+        <table width="200">
+            <thead>
+                <tr>
+                    <th>variable name</th>
+                    <th>result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>$light-blue</code></td>
+                    <td style="background-color: #3ba9c2;"></td>
+                </tr>
+                <tr>
+                    <td><code>$dark-blue</code></td>
+                    <td style="background-color: #308ea2;"></td>
+                </tr>
+                <tr>
+                    <td><code>$darker-blue</code></td>
+                    <td style="background-color: #257381;"></td>
+                </tr>
+                <tr>
+                    <td><code>$darkest-blue</code></td>
+                    <td style="background-color: #0f3c41;"></td>
+                </tr>
+                <tr>
+                    <td><code>$navy-blue</code></td>
+                    <td style="background-color: #414b64;"></td>
+                </tr>
+                <tr>
+                    <td><code>$light-gray</code></td>
+                    <td style="background-color: #f8fafc;"></td>
+                </tr>
+                <tr>
+                    <td><code>$dark-gray</code></td>
+                    <td style="background-color: #d7dce6;"></td>
+                </tr>
+                <tr>
+                    <td><code>$accent-light</code></td>
+                    <td style="background-color: #737d96;"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2 class="h2">Form Elements</h2>
+
+        <h3 class="h3">Input</h3>
+        
+        <input type="text" class="form-control" placeholder="Active Input" /> <br />
+        <input type="text" class="form-control" placeholder="Disabled Input" disabled />
+
+        <h3 class="h3">Select/Dropdown</h3>
+        <select name="" id="" class="form-control">
+            <option value="">Active Select/Dropdown</option>
+            <option value="">Option 2</option>
+            <option value="">Option 3</option>
+        </select> <br/>
+
+        <select name="" id="" class="form-control" disabled>
+            <option value="">Disabled Select/Dropdown</option>
+            <option value="">Option 2</option>
+            <option value="">Option 3</option>
+        </select> <br/>
+
+        <h3 class="h3">Switches</h3>
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+        </div>
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
+            <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+        </div>
+
+        <h3 class="h3">Buttons</h3>
+        <p>
+            <button class="btn btn-primary">btn btn-primary</button>
+            <button class="btn btn-outline-primary">btn btn-outline-primary</button>
+        </p>
+        <p>
+            <button class="btn btn-secondary">btn btn-secondary</button>
+            <button class="btn btn-outline-secondary">btn btn-outline-secondary</button>
+        </p>
+    </div>
     
-    <h1 class="h1">Style Guide</h1>
-    <h2 class="h2">Colors</h2>
-    <table width="200">
-        <thead>
-            <tr>
-                <th>variable name</th>
-                <th>result</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$light-blue</code></td>
-                <td style="background-color: #3ba9c2;"></td>
-            </tr>
-            <tr>
-                <td><code>$dark-blue</code></td>
-                <td style="background-color: #308ea2;"></td>
-            </tr>
-            <tr>
-                <td><code>$darker-blue</code></td>
-                <td style="background-color: #257381;"></td>
-            </tr>
-            <tr>
-                <td><code>$darkest-blue</code></td>
-                <td style="background-color: #0f3c41;"></td>
-            </tr>
-            <tr>
-                <td><code>$navy-blue</code></td>
-                <td style="background-color: #414b64;"></td>
-            </tr>
-            <tr>
-                <td><code>$light-gray</code></td>
-                <td style="background-color: #f8fafc;"></td>
-            </tr>
-            <tr>
-                <td><code>$dark-gray</code></td>
-                <td style="background-color: #d7dce6;"></td>
-            </tr>
-            <tr>
-                <td><code>$accent-light</code></td>
-                <td style="background-color: #737d96;"></td>
-            </tr>
-        </tbody>
-    </table>
-    <h2 class="h2">Buttons</h2>
-    <p>
-        <button class="btn btn-primary">btn btn-primary</button>
-        <button class="btn btn-outline-primary">btn btn-outline-primary</button>
-    </p>
-    <p>
-        <button class="btn btn-secondary">btn btn-secondary</button>
-        <button class="btn btn-outline-secondary">btn btn-outline-secondary</button>
-    </p>
     
     <script src="js/app.js"></script>
 </body>
