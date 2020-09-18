@@ -113,9 +113,6 @@
 
 <script>
 var covidData = [];
-$.getJSON("https://jrequiroso.github.io/cdo-covid-graph/covid-data.json", function(data){
-    covidData = data
-})
 
 var hide_lsi = false;
 var hide_rof = false;
@@ -130,113 +127,115 @@ var nodes = [];
 var node_count = 0;
 var edges = [];
 
-for (var i = 0; i < covidData.length ; i++) {
-    var original_text = covidData[i].text;
-    covidData[i].child = [];
+processJSONData = () => {
+    for (var i = 0; i < covidData.length ; i++) {
+        var original_text = covidData[i].text;
+        covidData[i].child = [];
 
-    // Getting Case #
-    var case_num_string = original_text.match(/CASE #\d*:/g);
-    var case_num = case_num_string[0].replace('CASE #', '').replace(':', '');
-    covidData[i].case_num = parseInt(case_num);
+        // Getting Case #
+        var case_num_string = original_text.match(/CASE #\d*:/g);
+        var case_num = case_num_string[0].replace('CASE #', '').replace(':', '');
+        covidData[i].case_num = parseInt(case_num);
 
-    // Getting Age
-    // NOTE: Infants aged < 1 year have been rounded up to 1
-    var age_string = original_text.match(/\d*-year old/g);
-    var age = age_string[0].replace('-year old', '');
-    covidData[i].age = parseInt(age);
-    
-    // Getting Gender
-    var sex_string = original_text.match(/(^|\s)male|female(\s|$)/g);
-    var sex = "unspecified";
-
-    if (sex_string != null) {
-        var sex = sex_string[0].trim();
-        covidData[i].sex = sex;
-    }
-
-    // Getting Case Type
-    var type_string = original_text.match(/LSI|ROF|LOCAL CASE/g);
-    var type = 'unspecified';
-
-    var color = 'blue';
-    if (type_string !== null)  {
-        type = type_string[0].trim();
+        // Getting Age
+        // NOTE: Infants aged < 1 year have been rounded up to 1
+        var age_string = original_text.match(/\d*-year old/g);
+        var age = age_string[0].replace('-year old', '');
+        covidData[i].age = parseInt(age);
         
-        switch (type) {
-            case 'LSI': color = "orange"; break;
-            case 'ROF': color = "green"; break;
-            case 'LOCAL CASE': color = "red"; break;
+        // Getting Gender
+        var sex_string = original_text.match(/(^|\s)male|female(\s|$)/g);
+        var sex = "unspecified";
+
+        if (sex_string != null) {
+            var sex = sex_string[0].trim();
+            covidData[i].sex = sex;
         }
+
+        // Getting Case Type
+        var type_string = original_text.match(/LSI|ROF|LOCAL CASE/g);
+        var type = 'unspecified';
+
+        var color = 'blue';
+        if (type_string !== null)  {
+            type = type_string[0].trim();
+            
+            switch (type) {
+                case 'LSI': color = "orange"; break;
+                case 'ROF': color = "green"; break;
+                case 'LOCAL CASE': color = "red"; break;
+            }
+        }
+        covidData[i].type = type;
+
+        // Getting people in contact with
+        var contacts = [];
+        var string_without_case_prefix = covidData[i].text.replace(/CASE #\d*:/g, '');
+        var in_contact_with_string = string_without_case_prefix.match(/CASE #\d*/gi, '');
+        if (in_contact_with_string !== null) {
+            for (var j = 0 ; j < in_contact_with_string.length ; j++) {
+                var contact_case_num = parseInt(in_contact_with_string[j].replace('CASE #', '').replace('case #', '').replace('Case #', '').trim());
+
+                // check first if already in array
+                if (!contacts.includes(contact_case_num)) {
+                    contacts.push(contact_case_num);
+                }
+            }
+        }
+
+        covidData[i].contacts = contacts;
+        if (contacts.length > 0) {
+            with_contacts.push(covidData[i]);
+        } else {
+            no_contacts.push(covidData[i]);
+        }
+
+        nodes.push({ 
+            id: parseInt(case_num), 
+            label: "Case #" + case_num,
+            title: covidData[i].original_text,
+            color: color,
+            caseType: type.replace(" ", '-'),
+            font: {
+                color: 'white',
+                face: 'Lato',
+            }
+        });
+        /* location:  "from xxxxxx" */
     }
-    covidData[i].type = type;
 
-    // Getting people in contact with
-    var contacts = [];
-    var string_without_case_prefix = covidData[i].text.replace(/CASE #\d*:/g, '');
-    var in_contact_with_string = string_without_case_prefix.match(/CASE #\d*/gi, '');
-    if (in_contact_with_string !== null) {
-        for (var j = 0 ; j < in_contact_with_string.length ; j++) {
-            var contact_case_num = parseInt(in_contact_with_string[j].replace('CASE #', '').replace('case #', '').replace('Case #', '').trim());
+    for (var i = 0; i < with_contacts.length ; i++) {
+        var current_case = with_contacts[i];
 
-            // check first if already in array
-            if (!contacts.includes(contact_case_num)) {
-                contacts.push(contact_case_num);
+        for (var j = 0; j < current_case.contacts.length ; j++) {
+            var parent_case_num = current_case.contacts[j];
+
+            var parent_case = covidData.filter( case1 => {
+                return case1.case_num == parent_case_num;
+            })[0]
+
+            if (parent_case != undefined) {
+                // push to parent case
+                /* covidData.filter( case1 => {
+                    return case1.case_num == parent_case_num;
+                })[0].child.push(current_case); */
+
+                edges.push({from: parent_case_num, to: current_case.case_num})
             }
         }
     }
 
-    covidData[i].contacts = contacts;
-    if (contacts.length > 0) {
-        with_contacts.push(covidData[i]);
-    } else {
-        no_contacts.push(covidData[i]);
-    }
+    // create a network
+    var container = document.getElementById('network-chart');
 
-    nodes.push({ 
-        id: parseInt(case_num), 
-        label: "Case #" + case_num,
-        title: covidData[i].original_text,
-        color: color,
-        caseType: type.replace(" ", '-'),
-        font: {
-            color: 'white',
-            face: 'Lato',
-        }
-    });
-    /* location:  "from xxxxxx" */
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    node_count = nodes.length;
+    $('#node-count').html(node_count + " patients (262 not included)<br/> <strong>" + (262 + node_count) + ' TOTAL </strong>');
 }
-
-for (var i = 0; i < with_contacts.length ; i++) {
-    var current_case = with_contacts[i];
-
-    for (var j = 0; j < current_case.contacts.length ; j++) {
-        var parent_case_num = current_case.contacts[j];
-
-        var parent_case = covidData.filter( case1 => {
-            return case1.case_num == parent_case_num;
-        })[0]
-
-        if (parent_case != undefined) {
-            // push to parent case
-            /* covidData.filter( case1 => {
-                return case1.case_num == parent_case_num;
-            })[0].child.push(current_case); */
-
-            edges.push({from: parent_case_num, to: current_case.case_num})
-        }
-    }
-}
-
-// create a network
-var container = document.getElementById('network-chart');
-
-// provide the data in the vis format
-var data = {
-    nodes: nodes,
-    edges: edges
-};
-node_count = nodes.length;
-$('#node-count').html(node_count + " patients (262 not included)<br/> <strong>" + (262 + node_count) + ' TOTAL </strong>');
 
 var options = {
     height: '100%',
@@ -251,31 +250,6 @@ var resetSelectedCase = () => {
     document.getElementById('case-id').innerHTML = '';
     document.getElementById('case-details').innerHTML = '';
 }
-
-// initialize your network!
-var network = new vis.Network(container, data, options);
-network.on( 'click', properties => {    
-    // clear info
-    resetSelectedCase();
-
-    if (properties.nodes.length > 0) {
-        var id = properties.nodes[0];
-        var selected_case = covidData.filter( selected_case => {
-            return selected_case.case_num == id;
-        })[0];
-        
-        document.getElementById('case-id').innerHTML = "CASE #" + selected_case.case_num
-
-        var details = selected_case.text.replace(/CASE #\d*:/g, '').split(';')
-        var detailsHTML;
-
-        for(var i = 0 ; i < details.length ; i++) {
-            detailsHTML = document.createElement('li');
-            detailsHTML.textContent = details[i];
-            document.getElementById('case-details').append(detailsHTML)
-        }
-    }
-});
 
 var filterNodesAndRedraw = () => {
     var dataCopy = covidData;
@@ -332,6 +306,39 @@ var filterNodesAndRedraw = () => {
 }
 
 $( document ).ready(function() {
+    $.getJSON("https://jrequiroso.github.io/cdo-covid-graph/covid-data.json", function(data){
+        covidData = data;
+        console.log(covidData);
+        processJSONData();
+
+        // initialize your network!
+        var network = new vis.Network(container, data, options);
+        network.on( 'click', properties => {    
+            // clear info
+            resetSelectedCase();
+
+            if (properties.nodes.length > 0) {
+                var id = properties.nodes[0];
+                var selected_case = covidData.filter( selected_case => {
+                    return selected_case.case_num == id;
+                })[0];
+                
+                document.getElementById('case-id').innerHTML = "CASE #" + selected_case.case_num
+
+                var details = selected_case.text.replace(/CASE #\d*:/g, '').split(';')
+                var detailsHTML;
+
+                for(var i = 0 ; i < details.length ; i++) {
+                    detailsHTML = document.createElement('li');
+                    detailsHTML.textContent = details[i];
+                    document.getElementById('case-details').append(detailsHTML)
+                }
+            }
+        });
+    }).fail(function(){
+            console.log("An error has occurred.");
+        });
+
     $( "#datepicker" ).datepicker({
         dateFormat: "yy-mm-dd",
         minDate: "2020-08-27",
