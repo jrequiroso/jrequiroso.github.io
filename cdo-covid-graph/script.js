@@ -467,7 +467,7 @@ var filterNodesAndRedraw = () => {
 
     network.setOptions(options);
     network.setData({ nodes: filteredNodes, edges });
-    network.redraw();
+    // network.redraw();
     node_count = filteredNodes.length;
     $('#node-count').html(node_count + " patients (262 not included)<br/> <strong>" + (262 + node_count) + ' TOTAL</strong>');
 }
