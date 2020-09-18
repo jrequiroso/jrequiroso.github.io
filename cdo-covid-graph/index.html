@@ -112,8 +112,10 @@
 <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
 
 <script>
-
-var covidData = $.getJSON("https://jrequiroso.github.io/cdo-covid-graph/covid-data.json");
+var covidData = [];
+$.getJSON("https://jrequiroso.github.io/cdo-covid-graph/covid-data.json", function(data){
+    covidData = data
+})
 
 var hide_lsi = false;
 var hide_rof = false;
