@@ -400,7 +400,7 @@ var data = {
     edges: edges
 };
 node_count = nodes.length;
-$('#node-count').html(node_count + " patients (262 not included)<br/> <strong>" + (262 + node_count) + ' TOTAL </strong>');
+$('#node-count').html(node_count + " patients (262 not included)<br/> <strong>" + (262 + node_count) + ' TOTAL CUMULATIVE CASES</strong>');
 
 var options = {
     height: '100%',
@@ -492,7 +492,7 @@ var filterNodesAndRedraw = () => {
     network.setData({ nodes: filteredNodes, edges });
     // network.redraw();
     node_count = filteredNodes.length;
-    $('#node-count').html(node_count + " patients (262 not included)<br/> <strong>" + (262 + node_count) + ' TOTAL</strong>');
+    $('#node-count').html(node_count + " patients (262 not included)<br/> <strong>" + (262 + node_count) + ' TOTAL CUMULATIVE CASES</strong>');
 }
 
 $( document ).ready(function() {
