@@ -507,6 +507,13 @@ $( document ).ready(function() {
     }).on("input change", function (e) {
         filterNodesAndRedraw();
     });
+    $("#toggle-sidebar").click(function() {
+        if ($("#info" ).hasClass("minimized")) {
+            $("#info" ).removeClass("minimized")
+        } else {
+            $("#info" ).addClass("minimized")
+        }
+    })
     $("#hide_rof").change(function () {
         hide_rof = false;
         if (this.checked) hide_rof = true;

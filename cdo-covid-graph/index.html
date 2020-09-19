@@ -4,53 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CDO COVID19 Tracker</title>
-
 </head>
 <body>
 
 <div class="container">
     <div id="network-chart"></div>
-    <div id="info">
-        <div class="info-header">
-            <h1>CDO COVID19 CASE NETWORK</h1>
-        </div>
-        <div id="instructions">Click a node to view details.</div>
-        <div id="node-count"></div>
-        <div id="case-info">
-            <h3 id="case-id"></h3>
-            <ul id="case-details"></ul>
-        </div>
-        <div id="chart-controls">
-            <h3 class="section-header" >Chart Controls</h3>
-            <div class="section-body">
-
-                <label for="hide_rof">
-                    <input type="checkbox" id="hide_rof" /> 
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="10" height="10" rx="8" fill="green"/>
-                    </svg>
-                    Hide Returning Overseas Filipinos (ROFs)
-                </label>
-                <label for="hide_lsi">
-                    <input type="checkbox" id="hide_lsi" />
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="10" height="10" rx="8" fill="orange"/>
-                    </svg>
-                    Hide Locally Stranded Individuals (LSIs)
-                </label>
-                <!-- <label for="hide_no_child">
-                    <input type="checkbox" id="hide_no_child" /> Hide no connections
-                </label> -->
-                
-                <label for="datepicker" style="padding-top: 4px;">Select a date</label>
-                <div id="datepicker"></div>
+    <div id="sidebar">
+        <button id="toggle-sidebar">↔</button>
+        <div id="info">
+            <div class="info-header">
+                <h1>CDO COVID19 CASE NETWORK</h1>
             </div>
-        </div>
-        <div id="attributions">
-            All raw data scraped from <a href="http://www.cdodev.com/" target="_blank">CDODev.com</a><br/>
-            Last updated: 19 Sept 2020<br/>
-            Made by <a href="https://github.com/jrequiroso" target="_blank">John Requiroso</a>
-        </div>
+            <div id="instructions">Click a node to view details.</div>
+            <div id="node-count"></div>
+            <div id="case-info">
+                <h3 id="case-id"></h3>
+                <ul id="case-details"></ul>
+            </div>
+            <div id="chart-controls">
+                <h3 class="section-header" >Chart Controls</h3>
+                <div class="section-body">
+    
+                    <label for="hide_rof">
+                        <input type="checkbox" id="hide_rof" /> 
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="10" height="10" rx="8" fill="green"/>
+                        </svg>
+                        Hide Returning Overseas Filipinos (ROFs)
+                    </label>
+                    <label for="hide_lsi">
+                        <input type="checkbox" id="hide_lsi" />
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="10" height="10" rx="8" fill="orange"/>
+                        </svg>
+                        Hide Locally Stranded Individuals (LSIs)
+                    </label>
+                    <!-- <label for="hide_no_child">
+                        <input type="checkbox" id="hide_no_child" /> Hide no connections
+                    </label> -->
+                    
+                    <label for="datepicker" style="padding-top: 4px;">Select a date</label>
+                    <div id="datepicker"></div>
+                </div>
+            </div>
+            <div id="attributions">
+                All raw data scraped from <a href="http://www.cdodev.com/" target="_blank">CDODev.com</a><br/>
+                Last updated: 19 Sept 2020<br/>
+                Made by <a href="https://github.com/jrequiroso" target="_blank">John Requiroso</a>
+            </div>
+        </div>        
     </div>
 </div>
 

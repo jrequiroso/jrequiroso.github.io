@@ -15,6 +15,20 @@ h1, h2, h3, h4, h5 {
     flex-grow: 1;
     height: 100vh;
 }
+#sidebar {
+    display: flex;
+    flex-direction: row;
+}
+#toggle-sidebar {
+    background: #dddddd;
+    border: none;
+    border-left: 1px solid black;
+    width: 30px;
+    cursor: pointer;
+}
+#info.minimized {
+    display: none;
+}
 #info {
     max-width: 360px;
     border-left: 1px solid black;
