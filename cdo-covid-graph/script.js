@@ -74,12 +74,12 @@ var covidData = [
     { "added": "2020-09-05", "text": "CASE #334: 42-year old male from Brgy Carmen; LSI from Caloocan City; arrived August 26 via Macabalan Port; swabbed September 1; asymptomatic"},
     { "added": "2020-09-05", "text": "CASE #335: 25-year old male from Brgy Bayabas; LOCAL CASE; son of Case #287; swabbed September 1; had fever while at CIU; expanded contact tracing ongoing"},
     { "added": "2020-09-05", "text": "CASE #336: 62-year old female from Brgy Bayabas; LOCAL CASE; spouse of Case #287; swabbed September 1"},
-    { "added": "2020-09-05", "text": "CASE #337: 56-year old male from Brgy Bayabas; LOCAL CASE; masseur (hilot) of Case #287; swabbed September 1; asymptomatic; 12 close contacts identified"},
+    { "added": "2020-09-05", "text": "CASE #337: 56-year old male from Brgy Bayabas; LOCAL CASE; masseur of Case #287; swabbed September 1; asymptomatic; 12 close contacts identified"},
     { "added": "2020-09-05", "text": "CASE #338:  6-year old female from Brgy Gusa; LOCAL CASE; daughter of Case #279; swabbed September 1"},
     { "added": "2020-09-05", "text": "CASE #339:  7-year old male from Brgy Gusa; LOCAL CASE; son of Case #279; swabbed September 1"},
     { "added": "2020-09-05", "text": "CASE #340:  9-year old female from Brgy Gusa; LOCAL CASE; daughter of Case #279; swabbed September 1"},
     { "added": "2020-09-05", "text": "CASE #341: 34-year old male from Brgy Gusa; LOCAL CASE; spouse of Case #279; swabbed September 1"},
-    { "added": "2020-09-05", "text": "CASE #342: 33-year old female from Brgy Bulua; LOCAL CASE – APOR; healthcare worker at private hospital; exposure to Case #289; had cough and throat discomfort August 24; swabbed September 1; contact tracing ongoing; currently admitted at private hospital"},
+    { "added": "2020-09-05", "text": "CASE #342: 33-year old female from Brgy Bulua; LOCAL CASE – APOR; healthcare worker at private hospital; exposed to Case #289; had cough and throat discomfort August 24; swabbed September 1; contact tracing ongoing; currently admitted at private hospital"},
     { "added": "2020-09-05", "text": "CASE #343: 33-year old female from Brgy Balulang; LOCAL CASE – APOR; healthcare worker at NMMC; had fever August 28; swabbed September 3; currenty admitted at NMMC; 33 weeks pregnant"},
     { "added": "2020-09-05", "text": "CASE #344: 27-year old female from Brgy Macabalan; LOCAL CASE; admitted at JR Borja City Hospital September 1 (pregnancy due); had cough, colds, swabbed September 1; referred to NMMC September 3; gave birth at NMMC; contact tracing ongoing"},
     { "added": "2020-09-05", "text": "CASE #345: 45-year old female from gated community at Brgy Iponan; LOCAL CASE – APOR; medical representative; developed fever, cough August 26; went to private hospital for consultation August 27; admitted at said hospital and swabbed September 2"},
@@ -293,6 +293,7 @@ var no_contacts = [];
 var nodes = [];
 var node_count = 0;
 var edges = [];
+var nodes_with_edges = [];
 
 for (var i = 0; i < covidData.length ; i++) {
     var original_text = covidData[i].text;
@@ -381,12 +382,41 @@ for (var i = 0; i < with_contacts.length ; i++) {
         })[0]
 
         if (parent_case != undefined) {
+            var match_replationship = '(\\w* of CASE #'+parent_case_num+ ')|(exposed to CASE #'+parent_case_num+')';
+            var re = new RegExp(match_replationship, 'gi');
+            var relationship_string = current_case.text.match(re);
+            
+            var label = '';
+
+            if (relationship_string !== null) {
+                label = relationship_string[0].replace(/CASE/gi, '');
+                if (relationship_string.length > 1) {
+                    label = relationship_string[1].replace(/CASE/gi, '');
+                }
+            }
             // push to parent case
             /* covidData.filter( case1 => {
                 return case1.case_num == parent_case_num;
             })[0].child.push(current_case); */
 
-            edges.push({from: parent_case_num, to: current_case.case_num})
+            if (!nodes_with_edges.includes(parent_case_num)) {
+                nodes_with_edges.push(parent_case_num)
+            }
+
+            if (!nodes_with_edges.includes(current_case.case_num)) {
+                nodes_with_edges.push(current_case.case_num)
+            }
+
+            edges.push({
+                from: parent_case_num, 
+                to: current_case.case_num,
+                label: label,
+                arrows: {
+                    to: {
+                        enabled: true
+                    }
+                }
+            })
         }
     }
 }
@@ -400,7 +430,7 @@ var data = {
     edges: edges
 };
 node_count = nodes.length;
-$('#node-count').html(node_count + " patients (262 not included)<br/> <strong>" + (262 + node_count) + ' TOTAL CUMULATIVE CASES</strong>');
+$('#node-count').html("Showing " + node_count + " patients (262 not included)<br/> <strong>" + (262 + node_count) + ' TOTAL CUMULATIVE CASES</strong>');
 
 var options = {
     height: '100%',
@@ -462,9 +492,10 @@ var filterNodesAndRedraw = () => {
     }
 
     if (hide_no_child) {
-        /* dataCopy = dataCopy.filter(datarow => {
-            return datarow.type != 'ROF'
-        }) */
+        // console.log(dataCopy);
+        dataCopy = dataCopy.filter(datarow => {
+            return nodes_with_edges.includes(datarow.case_num)
+        })
     }
 
     for (var i = 0; i < dataCopy.length ; i++) {
@@ -492,7 +523,7 @@ var filterNodesAndRedraw = () => {
     network.setData({ nodes: filteredNodes, edges });
     // network.redraw();
     node_count = filteredNodes.length;
-    $('#node-count').html(node_count + " patients (262 not included)<br/> <strong>" + (262 + node_count) + ' TOTAL CUMULATIVE CASES</strong>');
+    $('#node-count').html("Showing " + node_count + " patients (262 not included)<br/> <strong>" + (262 + node_count) + ' TOTAL CUMULATIVE CASES</strong>');
 }
 
 $( document ).ready(function() {
@@ -502,7 +533,7 @@ $( document ).ready(function() {
         maxDate: '0',
         beforeShowDay: function(date){
             var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
-            return [ ["2020-08-30", "2020-09-06", "2020-09-13"] .indexOf(string) == -1 ]
+            return [ ["2020-08-30", "2020-09-06", "2020-09-13", "2020-09-20"] .indexOf(string) == -1 ]
         }
     }).on("input change", function (e) {
         filterNodesAndRedraw();
