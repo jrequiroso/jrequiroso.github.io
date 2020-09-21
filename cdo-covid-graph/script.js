@@ -323,6 +323,7 @@ var covidData = [
 ]
 
 var hide_lsi = false;
+var only_for_selected_date = false;
 var hide_rof = false;
 var hide_no_child = false;
 var selected_date = '';
@@ -407,6 +408,12 @@ for (var i = 0; i < covidData.length ; i++) {
         font: {
             color: 'white',
             face: 'Lato',
+        },
+        icon: {
+            face: 'FontAwesome',
+            code: "\uf183",
+            size: 40,
+            color: '#f0a30a'
         }
     });
     /* location:  "from xxxxxx" */
@@ -515,9 +522,15 @@ network.on( 'click', properties => {
 var filterNodesAndRedraw = () => {
     var dataCopy = covidData;
     var filteredNodes = [];
+    var selectedDate = new Date($("#datepicker").val());
 
-    dataCopy = dataCopy.filter(datarow => {
-        return new Date(datarow.added) <= new Date($("#datepicker").val());
+    dataCopy = dataCopy.filter(datarow => {        
+        if (only_for_selected_date) {
+            var rowDateFormatted = new Date(datarow.added);
+            return rowDateFormatted.toDateString() == selectedDate.toDateString();
+        } else {
+            return new Date(datarow.added) <= new Date($("#datepicker").val());
+        }        
     })
 
     if (hide_lsi) {
@@ -597,6 +610,12 @@ $( document ).ready(function() {
     $("#hide_lsi").change(function () {
         hide_lsi = false;
         if (this.checked) hide_lsi = true;
+        filterNodesAndRedraw();
+    });
+
+    $("#only_for_this_date").change(function () {
+        only_for_selected_date = false;
+        if (this.checked) only_for_selected_date = true;
         filterNodesAndRedraw();
     });
 
