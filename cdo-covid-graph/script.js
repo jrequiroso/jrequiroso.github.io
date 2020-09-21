@@ -437,7 +437,7 @@ var options = {
     width: '100%',
     layout: {
         randomSeed: 1,
-        improvedLayout: true,
+        improvedLayout: false,
     },
 };
 
@@ -527,6 +527,8 @@ var filterNodesAndRedraw = () => {
 }
 
 $( document ).ready(function() {
+    var last_updated_date = new Date(covidData[covidData.length - 1].added);
+    $('#last_updated_date').text(last_updated_date.toDateString());
     $( "#datepicker" ).datepicker({
         dateFormat: "yy-mm-dd",
         minDate: "2020-08-27",
