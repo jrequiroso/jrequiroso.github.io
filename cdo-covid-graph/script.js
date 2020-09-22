@@ -319,7 +319,23 @@ var covidData = [
     { "added": "2020-09-21", "text": "CASE #579: 80-year old female from Brgy PUNTOD; LOCAL CASE; generalized body malaise; 9 direct contacts identified"},
     { "added": "2020-09-21", "text": "CASE #580: 51-year old male from gated community in UPPER BALULANG; LOCAL CASE; complained of body malaise; admitted at NMMC; EXPIRED Sept. 20; 2 direct contacts identified"},
     { "added": "2020-09-21", "text": "CASE #581: 3-year old female from Brgy LUMBIA; LOCAL CASE; daughter of Case #462; asymptomatic"},
-    { "added": "2020-09-21", "text": "CASE #582: 37-year old female from Brgy MACASANDIG; LOCAL CASE; exposed to Case #462; asymptomatic"}
+    { "added": "2020-09-21", "text": "CASE #582: 37-year old female from Brgy MACASANDIG; LOCAL CASE; exposed to Case #462; asymptomatic"},
+    { "added": "2020-09-22", "text": "CASE #583: 43-year old female from Brgy CARMEN; LSI from Talisay, Cebu; arrived Sept 11 via Macabalan Port"},
+    { "added": "2020-09-22", "text": "CASE #584: 48-year old female; LOCAL CASE; exposed to Case #470; 7 close contacts identified"},
+    { "added": "2020-09-22", "text": "CASE #585: 27-year old female from BRGY 14; LOCAL CASE; had fever, cough; 4 direct contacts identified"},
+    { "added": "2020-09-22", "text": "CASE #586: 19-year old female from Brgy GUSA; LOCAL CASE; had fever, cough, loss of sense of taste, smell"},
+    { "added": "2020-09-22", "text": "CASE #587: 27-year old male; LOCAL CASE – APOR; healthcare worker at NMMC; exposed to Case #556; 1 household contact identified; workplace contact tracing ongoing; currently at DOH isolation facility"},
+    { "added": "2020-09-22", "text": "CASE #588: 27-year old male from gated community at Brgy KAUSWAGAN; LOCAL CASE – APOR; pharmacist; had fever, cough, colds, body malaise; 9 direct household contacts identified; currently at DOH isolation facility"},
+    { "added": "2020-09-22", "text": "CASE #589: 27-year old female from Brgy. KAUSWAGAN; LOCAL CASE – APOR; wife of Case #588; healthcare worker at private hospital; had fever, cough and colds; currently at DOH isolation facility"},
+    { "added": "2020-09-22", "text": "CASE #590: 1-year old female from Brgy KAUSWAGAN; LOCAL CASE; daughter of Case #588; had fever; currently at DOH isolation facility"},
+    { "added": "2020-09-22", "text": "CASE #591: 23-year old female from Brgy KAUSWAGAN; LOCAL CASE; househelp of Case #588; currently at DOH isolation facility"},
+    { "added": "2020-09-22", "text": "CASE #592: 53-year old male from Brgy CARMEN; LOCAL CASE – APOR; had fever, cough, colds, loss of sense of taste & smell; brought to DOH isolation facility"},
+    { "added": "2020-09-22", "text": "CASE #593: 78-year old female from Brgy CARMEN; LOCAL CASE; was admitted at private hospital due to hypoglycemia, diabetes mellitus; discharged Sept 14 but had loss of appetite; re-admitted at private hospital; 6 household contacts identified"},
+    { "added": "2020-09-22", "text": "CASE #594: 76-year old male from NUMBERED BRGY; LOCAL CASE; admitted at private hospital; went to farm in MisOr (1 week); returned to CDO and complained of shortness of breath; 4 close contacts identified"},
+    { "added": "2020-09-22", "text": "CASE #595: 26-year old male from KAUSWAGAN; LOCAL CASE – APOR; had work at Lanao del Sur; returned to CDO with cough; admitted at private hospital"},
+    { "added": "2020-09-22", "text": "CASE #596: 38-year old female from Brgy MACABALAN; LOCAL CASE; admitted at private hospital due to vomitting; referred to NMMC; 8 direct contacts identified"},
+    { "added": "2020-09-22", "text": "CASE #597: 61-year old male from Brgy AGUSAN; LOCAL CASE; had dry cough, body malaise, shortness of breath; has asthma, hypertension"},
+    { "added": "2020-09-22", "text": "CASE #598: 32-year old female from Brgy CARMEN; LOCAL CASE; attended party Sept 10; developed loss of sense of smell; 17 direct contacts identified"}
 ]
 
 var hide_lsi = false;
