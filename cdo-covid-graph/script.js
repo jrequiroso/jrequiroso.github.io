@@ -335,7 +335,23 @@ var covidData = [
     { "added": "2020-09-22", "text": "CASE #595: 26-year old male from KAUSWAGAN; LOCAL CASE – APOR; had work at Lanao del Sur; returned to CDO with cough; admitted at private hospital"},
     { "added": "2020-09-22", "text": "CASE #596: 38-year old female from Brgy MACABALAN; LOCAL CASE; admitted at private hospital due to vomitting; referred to NMMC; 8 direct contacts identified"},
     { "added": "2020-09-22", "text": "CASE #597: 61-year old male from Brgy AGUSAN; LOCAL CASE; had dry cough, body malaise, shortness of breath; has asthma, hypertension"},
-    { "added": "2020-09-22", "text": "CASE #598: 32-year old female from Brgy CARMEN; LOCAL CASE; attended party Sept 10; developed loss of sense of smell; 17 direct contacts identified"}
+    { "added": "2020-09-22", "text": "CASE #598: 32-year old female from Brgy CARMEN; LOCAL CASE; attended party Sept 10; developed loss of sense of smell; 17 direct contacts identified"},
+    { "added": "2020-09-23", "text": "CASE #599: 83-year old male from Brgy LAPASAN; LOCAL CASE; had fever and cough; admitted at private hospital; 6 household contacts identified"},
+    { "added": "2020-09-23", "text": "CASE #600: 20-year old female from gated community in UPPER BALULANG; LOCAL CASE; granddaughter of Case #572; swabbed in Bukidnon due to fever and colds"},
+    { "added": "2020-09-23", "text": "CASE #601: 49-year old male from gated community in UPPER BALULANG; LOCAL CASE; family driver of Case #572; swabbed in Bukidnon"},
+    { "added": "2020-09-23", "text": "CASE #602: 49-year old male from gated community in UPPER BALULANG; LOCAL CASE; son of Case #572; swabbed in Bukidnon"},
+    { "added": "2020-09-23", "text": "CASE #603: 36-year old male from Brgy NAZARETH; LOCAL CASE – APOR; healthcare worker in Lanao del Sur; husband of Case #393"},
+    { "added": "2020-09-23", "text": "CASE #604: 67-year old male from gated subdivision in UPPER CARMEN; LOCAL CASE; complained of joint pains and fever; sought consultation at NMMC; 2 household contacts identified"},
+    { "added": "2020-09-23", "text": "CASE #605: 26-year old male from Brgy LAPASAN; LOCAL CASE; had fever and body weakness; 11 close contacts identified; expanded contact tracing ongoing"},
+    { "added": "2020-09-23", "text": "CASE #606: 71-year old male from Brgy CARMEN; LOCAL CASE; admitted to JR Borja General Hospital due to arm fracture (radius/ulna) from a fall; EXPIRED Sept 21; 3 direct contacts identified"},
+    { "added": "2020-09-23", "text": "CASE #607: 57-year old male from Brgy PATAG; LOCAL CASE; admitted at JR Borja General Hospital due to shortness of breath; EXPIRED Sept 21"},
+    { "added": "2020-09-23", "text": "CASE #608: 59-year old male from gated subdivision in GUSA; LOCAL CASE; husband of Case #568; had cough; admitted at private hospital"},
+    { "added": "2020-09-23", "text": "CASE #609: 34-year old male from Brgy BAYABAS; LOCAL CASE; had fever, shortness of breath; admitted at a private hospital; 2 direct contacts identified"},
+    { "added": "2020-09-23", "text": "CASE #610: 72-year old female from Brgy NAZARETH; LOCAL CASE – APOR; wife of Case #457; retired healthcare worker"},
+    { "added": "2020-09-23", "text": "CASE #611: 39-year old male from BRGY 17; LOCAL CASE; son of Case #517; asymptomatic"},
+    { "added": "2020-09-23", "text": "CASE #612: 70-year old female from BRGY 17; LOCAL CASE; wife of Case #517; 2 close contacts identified"},
+    { "added": "2020-09-23", "text": "CASE #613: 41-year old female from BRGY 17; LOCAL CASE; daughter of Case #517"},
+    { "added": "2020-09-23", "text": "CASE #614: 19-year old female from Brgy MACABALAN; LOCAL CASE; daughter of Case #432"},
 ]
 
 var hide_lsi = false;
