@@ -379,7 +379,20 @@ var covidData = [
     { "added": "2020-09-24", "text": "CASE #639: 55-year old male from Brgy IPONAN; LOCAL CASE – APOR; govt employee in Iligan; worked in Iligan Sept 14-18; sought consultation at private hospital; 1 close contact identfied"},
     { "added": "2020-09-24", "text": "CASE #640: 25-year old male from Brgy KAUSWAGAN; LOCAL CASE -APOR; consulted at private lab; had fever, 2 household contacts and 1 workplace contact identified"},
     { "added": "2020-09-24", "text": "CASE #641: 106-year old male from Brgy LUMBIA; LOCAL CASE; admitted at private hospital; had fever, cough; 2 watchers identified"},
-    { "added": "2020-09-24", "text": "CASE #642: 35-year old male from gated community in Brgy IPONAN; LOCAL CASE; tested positive in Manila while processing papers for abroad; 16 direct contacts identified; RE-TAGGED TO CDO"}
+    { "added": "2020-09-24", "text": "CASE #642: 35-year old male from gated community in Brgy IPONAN; LOCAL CASE; tested positive in Manila while processing papers for abroad; 16 direct contacts identified; RE-TAGGED TO CDO"},
+    { "added": "2020-09-25", "text": "CASE #643: 25-year old male from Brgy INDAHAG; ROF from Singapore; tested positive of Covid-19 in Singapore (isolated for 1 month); arrived in CDO Sept 14 via Laguindingan Airport; asymptomatic"},
+    { "added": "2020-09-25", "text": "CASE #644: 62-year old male from Brgy CAMAMAN-AN; LSI from Mandaluyong City; arrived in CDO Sept 16 via Laguindingan Airport; asymptomatic"},
+    { "added": "2020-09-25", "text": "CASE #645: 12-year old female from Brgy PAGATPAT; LSI from Paranaque City; arrived in CDO Sept 16 (with family); asymptomatic"},
+    { "added": "2020-09-25", "text": "CASE #646: 18-year old male from Brgy BALULANG; LSI from Bohol; arrived in CDO Sept 15 via Macabalan Port; asymptomatic"},
+    { "added": "2020-09-25", "text": "CASE #647: 34-year old male; LOCAL CASE – APOR; exposed to Case #515; assigned to Butuan City; returned to CDO Sept 1; had fever; for transfer to Camp Evangelista Station Hospital"},
+    { "added": "2020-09-25", "text": "CASE #648: 49-year old male from Brgy CARMEN; LOCAL CASE; admitted in a private hospital due to hypoglycemia; worked at a farm in Talakag; 3 household contacts identified; workplace contact tracing ongoing"},
+    { "added": "2020-09-25", "text": "CASE #649: 26-year old male from Brgy GUSA; LOCAL CASE; cousin of Case #586; showed symptoms upon transfer to CIU; 2 close contacts identified"},
+    { "added": "2020-09-25", "text": "CASE #650: 32-year old male from Brgy GUSA; LOCAL CASE; neighbor of Case #586; asymptomatic"},
+    { "added": "2020-09-25", "text": "CASE #651: 34-year old male from Brgy BUGO; LOCAL CASE; worked at an industrial plant in Bugo; had fever; 13 direct household contacts identified; workplace contact tracing ongoing"},
+    { "added": "2020-09-25", "text": "CASE #652: 24-year old female from Brgy CAMAMAN-AN; LOCAL CASE; worked as inventory staff of a logistics company; had fever; 4 close contacts identified"},
+    { "added": "2020-09-25", "text": "CASE #653: 35-year old male from Brgy CARMEN; LOCAL CASE; worked at a private company in Tablon; admitted in a private hospital due to comnplaints of throat discomfort and fever; 4 household contacts identified; workplace contact tracing ongoing"},
+    { "added": "2020-09-25", "text": "CASE #654: 59-year old female from BRGY 25; LOCAL CASE; attended gathering in a government institution in a municipality in MisOr Sept 15; had fever and loss of sense of taste; 3 household and 8 workplace contacts identified; further contact tracing still ongoing"},
+    { "added": "2020-09-25", "text": "CASE #655: 52-year old male from Brgy IPONAN; LOCAL CASE – APOR; had fever, cough, headache, body malaise; sought medical consultation at a private hospital; referred to NMMC; 6 direct household contacts identified"},
 ]
 
 var hide_lsi = false;
