@@ -421,6 +421,42 @@ var covidData = [
     { "added": "2020-09-26", "text": "CASE #681: 27-year old female from Brgy CARMEN; LOCAL CASE – APOR; exposed to Case #570; healthcare worker; had fever; admitted at private hospital; 4 household and 7 workplace contacts dentified"},
     { "added": "2020-09-26", "text": "CASE #682: 65-year old male from Brgy BULUA; LOCAL CASE; had cough, loss of sense of taste and smell, fever; sought consultation at Camp Evangelista Station Hospital; further contact tracing ongoing"},
     { "added": "2020-09-26", "text": "CASE #683: 29-year old male from Brgy MACASANDIG; LOCAL CASE – APOR; worker at NMMC; had fever; admitted at NMMC"},
+    { "added": "2020-09-28", "text": "CASE #684: 21-year old male from Brgy TABLON; LSI from Surigao; arrived at CDO Port Sept 19; contact tracing ongoing"},
+    { "added": "2020-09-28", "text": "CASE #685: 55-year old male from Brgy TABLON; LOCAL CASE; worked at Bugo factory; had shortness of breath, diabetes; swabbed at company dispensary; 3 close contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #686: 49-year old male from Brgy TABLON; LOCAL CASE; worked at Bugo factory; had fever, cough, colds; swabbed at company dispensary; 4 close contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #687: 29-year old male from Brgy BUGO; LOCAL CASE; worked at Bugo factory; exposed to a confirmed case in the province; had cough; swabbed at company dispensary; 8 close contacts and 19 workplace contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #688: 30-year old male from Brgy CAMAMAN-AN; LOCAL CASE; worked at Bugo factory; visited death anniversary in the province Sept 9; had fever, loss of sense of taste & smell; swabbed at company dispensary; 1 direct household and 6 workplace contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #689: 22-year old female from Brgy BUGO; LOCAL CASE; worked at Bugo factory; had fever, cough; swabbed at company dispensary; 6 household and 9 workplace contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #690: 37-year old female from Brgy LAPASAN; LOCAL CASE; worked at Bugo factory; exposed to a positive case in adjacent municipality; developed loss of sense of taste & smell; swabbed at company dispensary; 5 direct contacts and 5 workplace contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #691: 64-year old male from Brgy PATAG; LOCAL CASE; exposed to Case #654; driver of coaster which transports workers"},
+    { "added": "2020-09-28", "text": "CASE #692: 31-year old male from Brgy MACABALAN; LOCAL CASE; worked at govt instution in adjacent municipality; exposed to Case #626; 2 direct contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #693: 42-year old female from Brgy BUGO; LOCAL CASE; worked at govt institution in the province; exposed to Case #654; 8 workplace contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #694: 30-year old male from Brgy BUGO; LOCAL CASE; worked at private institution; contact tracing ongoing"},
+    { "added": "2020-09-28", "text": "CASE #695: 24-year old female from Brgy CARMEN; LOCAL CASE – APOR; works at a govt installation at port area; had fever, loss of sense of smell & taste; admitted at private isolation facility; 3 household contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #696: 40-year old male from Brgy CUGMAN; LOCAL CASE; works as a messenger; complained of body pains, loss of sense of taste & smell, colds; 2 household contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #697: 37-year old female from Brgy KAUSWAGAN; LOCAL CASE; had fever, cough, colds, headache; 5 close contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #698: 33-year old male from Brgy CARMEN; LSI from Manila; arrived Sept. 20 via Laguindingan Airport"},
+    { "added": "2020-09-28", "text": "CASE #699: 34-year old male from Brgy KAUSWAGAN; LOCAL CASE; had fever, dry cough, diarrhea; had medical check-up at private hospital; 3 direct contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #700: 36-year old female from Brgy KAUSWGAAN; LOCAL CASE – APOR; had fever, diarrhea; 3 direct and 2 workplace contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #701: 26-year old female; LOCAL CASE; exposed to Case #654; had fever, loss of sense of taste & smell, colds; 8 household contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #702: 40-year old male from Brgy AGUSAN; LOCAL CASE; worked as a welder; swabbed as medical reqt before going to Manila; 11 household contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #703: 64-year old male from Brgy BULUA; LOCAL CASE; admitted at private hospital due to renal stones scheduled for elective surgery; swabbed as requisite for surgery; 2 household contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #704: 35-year old female from Brgy PAGATPAT; LOCAL CASE – APOR; works as medrep; 39 weeks pregnant admitted at NMMC; swabbed as requisite for operation; 1 direct contact identified"},
+    { "added": "2020-09-28", "text": "CASE #705: 59-year old female from Brgy BULUA; LOCAL CASE; wife of Case #638; govt employee; admitted at private hospital; had history of illness; 1 household contact identified"},
+    { "added": "2020-09-28", "text": "CASE #706: 47-year old female from Brgy GUSA; LOCAL CASE; private employee; developed flu-like symptoms; 4 household contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #707: 73-year old male from Brgy BALULANG; LOCAL CASE; has diabetes mellitus, hypertension, history of heart angioplasty; had cough, fever; admitted at NMMC; 7 household contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #708: 40-year old female from Brgy CARMEN; LOCAL CASE; had fever, cough; admitted at JR Borja General Hospital; 2 direct contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #709: 32-year old male; LOCAL CASE – APOR; exposed to Case #640; govt employee; admitted at NMMC; had fever, cough, shortness of breath; 7 direct contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #710: 7-year old male from Brgy CARMEN; LOCAL CASE; son of Case #504; 3 close contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #711: 3-year old male from Brgy CARMEN; LOCAL CASE; son of Case #504"},
+    { "added": "2020-09-28", "text": "CASE #712: 52-year old female from Brgy BULUA; LOCAL CASE; had fever, cough; contact tracing ongoing"},
+    { "added": "2020-09-28", "text": "CASE #713: 33-year old male from Brgy GUSA; LOCAL CASE; cousin of Case #649; 2 close contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #714: 28-year old female from Brgy NAZARETH; LOCAL CASE; exposed to Case #434 & #435; 2 close contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #715: 25-year old female from Brgy LAPASAN; LOCAL CASE; common-law partner of Case #605"},
+    { "added": "2020-09-28", "text": "CASE #716: 30-year old male from BRGY 26; LOCAL CASE – APOR; healthcare worker at NMMC; had body weakness, fever; admitted at NMMC; 2 household contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #717: 38-year old male from Brgy MACASANDIG; LOCAL CASE – APOR; healthcare worker at NMMC; had fever, body malaise; admitted at NMMC; 3 household contacts identified"},
+    { "added": "2020-09-28", "text": "CASE #718: 63-year old female from Brgy GUSA; LOCAL CASE – APOR; healthcare worker; swabbed as requirement for elective surgery"},
+    { "added": "2020-09-28", "text": "CASE #719: 32-year old female from Brgy KAUSWAGAN; LOCAL CASE -APOR; healthcare worker; complained of colds, throat discomfort; 3 hosuehold contacts identified"},
 ]
 
 var hide_lsi = false;
@@ -504,18 +540,18 @@ for (var i = 0; i < covidData.length ; i++) {
         id: parseInt(case_num), 
         label: "Case #" + case_num,
         title: covidData[i].original_text,
-        color: color,
+        color: {
+            background: color,
+            border: '#000000',
+            highlight: {
+                background: color
+            },
+        },
         caseType: type.replace(" ", '-'),
         font: {
             color: 'white',
             face: 'Lato',
         },
-        icon: {
-            face: 'FontAwesome',
-            code: "\uf183",
-            size: 40,
-            color: '#f0a30a'
-        }
     });
     /* location:  "from xxxxxx" */
 }
@@ -690,7 +726,7 @@ $( document ).ready(function() {
         maxDate: '0',
         beforeShowDay: function(date){
             var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
-            return [ ["2020-08-30", "2020-09-06", "2020-09-13", "2020-09-20"] .indexOf(string) == -1 ]
+            return [ ["2020-08-30", "2020-09-06", "2020-09-13", "2020-09-20", "2020-09-27"] .indexOf(string) == -1 ]
         }
     }).on("input change", function (e) {
         filterNodesAndRedraw();
