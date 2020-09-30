@@ -500,6 +500,26 @@ var covidData = [
     { "added": "2020-09-29", "text": "CASE #760: 51-year old female from Brgy IPONAN; LOCAL CASE – APOR; healthcare worker in Bukidnon; currently in an isolation unit in Bukidnon; 7 direct contacts identified"},
     { "added": "2020-09-29", "text": "CASE #761: 41-year old female from Brgy BALULANG; LOCAL CASE – APOR; healthcare worker in Lanao del Sur; returned to CDO Sept 13; admitted to NMMC Sept 24 active labor (pregnant); gave birth at NMMC; 3 household contacts identified"},
     { "added": "2020-09-29", "text": "CASE #762: 24-year old male from Brgy IPONAN; LOCAL CASE; had diarrhea, fever, cough; admitted at NMMC; 2 close contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #763: 56-year old male from Brgy CUGMAN; LOCAL CASE; had fever, loss of sense of smell; admitted at NMMC; 3 household contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #764: 25-year old male from Brgy CARMEN; LOCAL CASE – APOR; worked at DOH-10; had flu, cough, fever, loss of sense of smell & taste; currently at DOH isolation facility"},
+    { "added": "2020-09-30", "text": "CASE #765: 62-year old female from Brgy CANITOAN; LOCAL CASE; had fever, cough; admitted at NMMC; 4 direct contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #766: 65-year old male from Brgy CAMAMAN-AN; LOCAL CASE; has hypertension, kidney ailment, anorexia; EXPIRED at NMMC Sept 26; contact tracing ongoing"},
+    { "added": "2020-09-30", "text": "CASE #767: 50-year old female from Brgy INDAHAG; LOCAL CASE – APOR; had mild colds, loss of sense of smell & taste; 2 direct contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #768: 46-year old male from Brgy PAGATPAT; LOCAL CASE – APOR; had dry cough; 8 household contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #769: 22-year old female from Brgy MACASANDIG; LOCAL CASE; 38 weeks pregnant; 2 close contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #770: 34-year old male from Brgy IPONAN; LOCAL CASE – APOR; had dry cough; 11 close contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #771: 43-year old female from Brgy CAMAMAN-AN; LOCAL CASE – APOR; had dry cough; 6 close contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #772: 56-year old female from UPPER BALULANG; LOCAL CASE; wife of Case #625; 3 close contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #773: 32-year old male from Brgy BALULANG; LOCAL CASE; son of Case #707; 5 direct contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #774: 46-year old female from Brgy LAPASAN; LOCAL CASE; exposed to Case #605, #715; 9 close contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #775: from Brgy LAPASAN; LOCAL CASE; exposed to Case #715"},
+    { "added": "2020-09-30", "text": "CASE #776: 22-year old female from Brgy LAPASAN; LOCAL CASE; sister of Case #715"},
+    { "added": "2020-09-30", "text": "CASE #777: 16-year old male from Brgy LAPASAN; LOCAL CASE; brother of Case #715"},
+    { "added": "2020-09-30", "text": "CASE #778: 4-months old child from Brgy LAPASAN; LOCAL CASE; child of Case #715 and #605"},
+    { "added": "2020-09-30", "text": "CASE #779: 21-year old male from Brgy LAPASAN; LOCAL CASE; exposed to Case #605"},
+    { "added": "2020-09-30", "text": "CASE #780: 25-year old female from Brgy KAUSWAGAN; LOCAL CASE; govt employee; had sore throat, loss of sense of smell & taste, sinusitis; attended gathering; 1 close contact identified"},
+    { "added": "2020-09-30", "text": "CASE #781: 31-year old male from Brgy BULUA; LOCAL CASE – APOR; asymptomatic; 7 household contacts identified"},
+    { "added": "2020-09-30", "text": "CASE #782: 44-year old female from Brgy PUERTO; LOCAL CASE; had fever, shortness of breath, diarrhea, vomiting; 3 direct contacts identified"},
 ]
 
 var hide_lsi = false;
@@ -528,9 +548,9 @@ for (var i = 0; i < covidData.length ; i++) {
 
     // Getting Age
     // NOTE: Infants aged < 1 year have been rounded up to 1
-    var age_string = original_text.match(/\d*-year old/g);
+    /* var age_string = original_text.match(/\d*-year old/g);
     var age = age_string[0].replace('-year old', '');
-    covidData[i].age = parseInt(age);
+    covidData[i].age = parseInt(age); */
     
     // Getting Gender
     var sex_string = original_text.match(/(^|\s)male|female(\s|$)/g);
