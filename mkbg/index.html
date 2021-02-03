@@ -31,8 +31,8 @@
 	    border-radius: 999px;
 	    filter: drop-shadow(0 0 6px rgba(105, 155, 255, 1));
 	    animation:
-		  tail 3000ms ease-in-out infinite,
-		  shooting 3000ms ease-in-out infinite;
+		  tail 6000ms ease-in-out infinite,
+		  shooting 6000ms ease-in-out infinite;
 	}
 	
 	.shooting-star::before {
@@ -45,7 +45,7 @@
 		background: linear-gradient(-45deg, rgba(0, 0, 255, 0), rgba(95, 145, 255, 1), rgba(0, 0, 255, 0));
 		transform: translateX(50%) rotateZ(45deg);
 		border-radius: 100%;
-		animation: shining 3000ms ease-in-out infinite;
+		animation: shining 6000ms ease-in-out infinite;
 	}
 
 	.shooting-star::after {
@@ -58,7 +58,7 @@
 		background: linear-gradient(-45deg, rgba(0, 0, 255, 0), rgba(95, 145, 255, 1), rgba(0, 0, 255, 0));
 		transform: translateX(50%) rotateZ(45deg);
 		border-radius: 100%;
-		animation: shining 3000ms ease-in-out infinite;
+		animation: shining 6000ms ease-in-out infinite;
 		transform: translateX(50%) rotateZ(-45deg);
 	}
   
@@ -209,7 +209,7 @@
 	for (var i = 0; i < stars.length; i++) {
 		document.getElementsByClassName("shooting-star")[i].style.top = (Math.floor(Math.random() * 2000) + 5) + "px";
 		document.getElementsByClassName("shooting-star")[i].style.left = Math.floor(Math.random() * -200) + "px";
-		document.getElementsByClassName("shooting-star")[i].style.animationDelay = Math.floor(Math.random() * 3000) + "ms";
+		document.getElementsByClassName("shooting-star")[i].style.animationDelay = Math.floor(Math.random() * 6000) + "ms";
 	}
 	</script>
 </body>
