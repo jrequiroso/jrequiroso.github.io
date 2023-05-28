@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A basic tool for raffles">
+
+    <title>Raffle Wheel Picker</title>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- check sample here: https://github.com/mcoredev/vue-winner-picker/blob/master/src/components/WinnerPicker.vue -->
+    <!-- http://vue.mcore.sk/ -->
+    <!-- https://codepen.io/toschivictor/pen/JjNZjEj -->
+
+    <div id="app">
+
+        <div class="top-half">
+
+            <div id="header-controls">
+                <button class="page-control"
+                    :disabled="spinning_prize || spinning_person"
+                    :class="{active : page == 'setup'}"
+                    @click="changePage('setup')">SETUP</button>
+                <button class="page-control"
+                    :class="{active : page == 'raffle'}"
+                    @click="changePage('raffle')">RAFFLE</button>
+            </div>
+
+            <!-- <div class="logo-container-floating"></div> -->
+            <!-- v-if="page == 'setup'" -->
+            <div id="setup" class="top-content" v-if="page == 'setup'" >
+
+                <div id="setup-form">
+                    <div class="logo-container">
+                        <div class="event-details-top">
+                            <div class="organizers">CAGAYAN DE ORO</div>
+                        </div>
+
+                        <img src="images/logo.png" alt="CDO Mech Meetup#2" width="300"/>
+                        <div class="event-details-bottom">
+                            <div class="location">Lifeline Coffee Brewers</div>
+                            <div class="date-time">June 17, 2023, 1PM</div>
+                        </div>
+                    </div>
+
+                    <div class="entry-setup">
+                        
+                        <div class="form-input-group">
+                            <input type="text" class="text-input" v-model="new_name" placeholder="Add name" width="40"/>
+                            <button @click="addSingleName()" class="button primary"
+                                :disabled="new_name == ''">
+                                Add one
+                            </button>
+                        </div>
+                        
+                        <div style="width: 100%;margin: 0px auto;text-align: center;font-size: 20px;font-weight: bold;">Or</div>
+
+                        <textarea v-model="new_names" id="" cols="30" rows="3" placeholder="Add names, one per line"></textarea>
+                        <div class="add-buttons">
+                            <button @click="addSampleNames()" class="button primary-outline">Add sample names</button>
+                            <button @click="addMultipleNames()" :disabled="new_names == ''" class="button primary" style="flex-grow:1;"> Add multiple</button>
+                        </div>
+                    </div>
+
+                    <div class="prize-setup">
+                        <div class="form-input-group">
+                            <input type="text" class="text-input" v-model="new_prize" placeholder="Prize name"/>
+                            <input type="text" class="text-input" v-model="new_sponsor" placeholder="Sponsor name"/>
+                            <button @click="addSinglePrize()" class="button primary"
+                                :disabled="new_prize == '' || new_sponsor == ''">
+                                Add one
+                            </button>
+                        </div>
+                        
+                        <div style="width: 100%;margin: 0px auto;text-align: center;font-size: 20px;font-weight: bold;">Or</div>
+
+                        <textarea v-model="new_prizes" id="" cols="30" rows="3" placeholder="Add prizes, one per line in this format: 'SponsorName|Prize', ex.: 'BOUY Mods|Keyboard Service Voucher' "></textarea>
+                        
+                        <div class="add-buttons">
+                            <button @click="addSamplePrizes()" class="button primary-outline">Add sample prizes</button>
+                            <button @click="addMultiplePrizes()" class="button primary" 
+                                :disabled="new_prizes == ''" style="flex-grow:1;"> Add multiple</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="raffle-time" class="top-content" v-if="page == 'raffle'">
+                <div id="rollers">
+
+                    <div class="logo-container">
+                        <div class="event-details-top">
+                            <div class="organizers">CAGAYAN DE ORO</div>
+                        </div>
+
+                        <img src="images/logo.png" alt="CDO Mech Meetup#2" width="300"/>
+                        <div class="event-details-bottom">
+                            <div class="location">Lifeline Coffee Brewers</div>
+                            <div class="date-time">June 17, 2023, 1PM</div>
+                        </div>
+                    </div>
+
+                    <div id="prize-roller" class="roller-container">
+    
+                        <div class="roller">
+                            <div :class="{ rolling : spinning_prize }">{{ selected_prize == null ? '' : selected_prize.name }}</div>
+                        </div>
+                        
+                        <button @click="rollPrize()" v-if="!spinning_prize" class="button primary"
+                            :disabled="entries.length == 0 || prizes.length == 0">Roll Prize</button>
+                        <button @click="stopRollPrize()" v-if="spinning_prize" class="button primary">STOP!</button>
+    
+                    </div>
+                    
+                    <div id="person-roller" class="roller-container">
+                        <div class="roller">
+                            <div :class="{ rolling : spinning_person }">{{ selected_person == null ? '' : selected_person }}</div>
+                        </div>
+    
+                        <button @click="rollPerson()" v-if="!spinning_person"  class="button primary"
+                            :disabled="entries.length == 0 || prizes.length == 0">Roll Person</button>
+                        <button @click="stopRollPerson()" v-if="spinning_person" class="button primary">STOP!</button>
+                    </div>
+    
+                </div>
+    
+                <div class="roller-controls">
+                    <button v-if="is_not_rolling_both"
+                    class="button primary"
+                        :disabled="entries.length == 0 || prizes.length == 0"
+                        @click="rollBoth">Roll Both</button>
+                    <button v-if="spinning_prize || spinning_person" 
+                        class="button primary"
+                        @click="stopBoth">Stop Rolling</button>
+                    <button type="button"
+                        class="button primary"
+                        :disabled="!can_record_result"
+                        @click="saveResult">Save Result</button>
+
+                    <button v-if="entries.length == 0 && prizes.length > 0"
+                        @click="reAddAllPrizeWinners()"
+                        class="button primary-outline">
+                        Re-add All Names
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="bottom-half" style="height: calc(100vh - 450px); overflow-y: auto;">
+
+            <div class="raffle-information">
+                <div id="name-list" class="lists">
+                    <div class="section-name">Entries ({{ entries.length }})</div>
+
+                    <div v-if="entries.length > 0">
+                        <div class="entry" v-for="(entry, index) in entries" :key="index">
+                            
+                            
+                            <button class="button-icon" title="Delete"
+                                v-if="page == 'setup' && !is_editing_person && winners.length == 0"
+                                @click="deletePerson(index)">
+                                <svg width="25" height="25" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" rx="20" fill="#FF374B"/>
+                                    <path d="M28 13V15H12V13H16V12C16 11.4477 16.4477 11 17 11H23C23.5523 11 24 11.4477 24 12V13H28Z" fill="white"/>
+                                    <path d="M14.1118 17L15.2413 28.1021C15.2936 28.6122 15.7233 29 16.236 29H23.764C24.2768 29 24.7065 28.6122 24.7588 28.1021L25.8882 17H14.1118Z" fill="white"/>
+                                </svg>
+                            </button>
+                            
+                            <div class="item-text" v-if="!is_editing_person|| index != edit_person_index">{{ entry }}</div>
+                            <div v-else-if="index == edit_person_index" class="edit-container">
+                                <input class="item-text-edit" type="text" v-model="entries[index]" placeholder="Name" />
+                            </div>
+
+                            <button class="button-icon" title="Edit"
+                                v-if="page == 'setup' && !is_editing_person"
+                                @click="editPerson(index)">
+                                
+                                <svg width="25" height="25" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" rx="20" fill="#FF9600"/>
+                                    <path d="M20.9928 22.4011L18 22.9998L18.5986 20.0076L25.446 13.1599L27.8401 15.5544L20.9928 22.4011Z" fill="white"/>
+                                    <path d="M29.876 12.9197L28.0804 11.1238C27.9151 10.9587 27.6472 10.9587 27.4818 11.1238L26.1603 12.4462L28.5542 14.8396L29.876 13.5183C30.0414 13.3523 30.0413 13.0847 29.876 12.9197Z" fill="white"/>
+                                    <path d="M16.0389 22.6072C15.9077 23.2629 16.0271 24.0271 16.5 24.5C16.9729 24.9729 17.7365 25.0918 18.3923 24.9607L21.385 24.362C21.7722 24.2846 22.1277 24.0943 22.4069 23.8152L27.9474 18.2752C28.0565 21.0759 27.9959 23.9931 27.7656 26.664C27.6684 27.7937 26.7387 28.6858 25.5612 28.7797C21.8834 29.0736 18.1166 29.0732 14.4388 28.7797C13.2613 28.6858 12.3316 27.7937 12.2344 26.664C11.9219 23.0396 11.9219 18.9618 12.2344 15.3369C12.3316 14.2076 13.2595 13.316 14.4366 13.2216C17.1746 13.0017 19.9615 12.9455 22.7245 13.0528L17.1844 18.5931C16.9052 18.8723 16.7149 19.2279 16.6375 19.615L16.0389 22.6072Z" fill="white"/>
+                                </svg>
+                            </button>
+
+                            <button class="button-icon" title="Save"
+                                v-if="page == 'setup' && is_editing_person && index == edit_person_index"
+                                @click="savePerson()">
+                                
+                                <svg width="25" height="25" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" rx="20" fill="#05C35F"/>
+                                    <path d="M16.0153 11.0943C17.0075 11.044 18.0033 11.0126 19 11V14.9951C18.3021 14.9951 17.6041 14.9675 16.9146 14.9124C16.473 14.8772 16.1244 14.5425 16.0879 14.1188C16.0049 13.1557 15.9807 12.1072 16.0153 11.0943Z" fill="white"/>
+                                    <path d="M24.1709 15.8302C25.054 15.7596 25.7513 15.0904 25.8242 14.2428C25.9081 13.269 25.962 12.2515 25.9858 11.2216C26.0769 11.2286 26.1678 11.2358 26.2588 11.2431C27.583 11.3492 28.627 12.3526 28.7363 13.6236C29.0879 17.703 29.0879 22.2922 28.7363 26.371C28.627 27.6424 27.5811 28.6463 26.2563 28.7521C26.1709 28.7589 26.0854 28.7656 25.9998 28.7721C25.9962 26.4406 25.9377 24.1132 25.8242 21.9186C25.7513 20.5065 25.0553 19.3916 24.1725 19.2735C21.4129 18.9041 18.5871 18.9041 15.8275 19.2735C14.9447 19.3916 14.2487 20.5065 14.1758 21.9186C14.0623 24.1132 14.0038 26.4406 14.0002 28.7721C13.9146 28.7656 13.8291 28.7589 13.7437 28.7521C12.4189 28.6463 11.373 27.6424 11.2637 26.371C10.9121 22.2922 10.9121 17.703 11.2637 13.6236C11.373 12.3526 12.417 11.3492 13.7412 11.2431C13.8322 11.2358 13.9231 11.2286 14.0142 11.2216C14.038 12.2515 14.0919 13.269 14.1758 14.2428C14.2487 15.0904 14.946 15.7596 15.8291 15.8302C18.5875 16.0504 21.4125 16.0506 24.1709 15.8302Z" fill="white"/>
+                                    <path d="M23.8828 23.3349C23.9596 25.1162 23.9986 27.0067 24 28.8992C21.342 29.0337 18.658 29.0336 16 28.8991C16.0014 27.0067 16.0404 25.1162 16.1172 23.3349C16.1658 22.2052 16.6298 21.3133 17.2183 21.2189C19.0581 20.9233 20.9419 20.9233 22.7817 21.2189C23.3702 21.3133 23.8342 22.2052 23.8828 23.3349Z" fill="white"/>
+                                </svg>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="prize-list" class="lists">
+                    <div class="section-name">Prizes ({{ prizes.length }})</div>
+                    <div>
+                        <div class="prize" v-for="(prize, index) in prizes" :key="index">
+                            
+                            <button class="button-icon" title="Delete"
+                                v-if="page == 'setup' && !is_editing_prize && winners.length == 0"
+                                @click="deletePrize(index)">
+                                <svg width="25" height="25" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" rx="20" fill="#FF374B"/>
+                                    <path d="M28 13V15H12V13H16V12C16 11.4477 16.4477 11 17 11H23C23.5523 11 24 11.4477 24 12V13H28Z" fill="white"/>
+                                    <path d="M14.1118 17L15.2413 28.1021C15.2936 28.6122 15.7233 29 16.236 29H23.764C24.2768 29 24.7065 28.6122 24.7588 28.1021L25.8882 17H14.1118Z" fill="white"/>
+                                </svg>
+                            </button>
+
+                            <div class="item-text" v-if="!is_editing_prize|| index != edit_prize_index">{{ prize.name }} from {{ prize.sponsor }}</div>
+                            <div v-else-if="index == edit_prize_index" class="edit-container">
+                                <input class="item-text-edit" type="text" v-model="prizes[index].name" placeholder="Prize Name" />
+                                <span> from </span>
+                                <input class="item-text-edit" type="text" v-model="prizes[index].sponsor" placeholder="Sponsor" />
+                            </div>
+
+                            <button class="button-icon" title="Edit"
+                                v-if="page == 'setup' && !is_editing_prize"
+                                @click="editPrize(index)">
+                                
+                                <svg width="25" height="25" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" rx="20" fill="#FF9600"/>
+                                    <path d="M20.9928 22.4011L18 22.9998L18.5986 20.0076L25.446 13.1599L27.8401 15.5544L20.9928 22.4011Z" fill="white"/>
+                                    <path d="M29.876 12.9197L28.0804 11.1238C27.9151 10.9587 27.6472 10.9587 27.4818 11.1238L26.1603 12.4462L28.5542 14.8396L29.876 13.5183C30.0414 13.3523 30.0413 13.0847 29.876 12.9197Z" fill="white"/>
+                                    <path d="M16.0389 22.6072C15.9077 23.2629 16.0271 24.0271 16.5 24.5C16.9729 24.9729 17.7365 25.0918 18.3923 24.9607L21.385 24.362C21.7722 24.2846 22.1277 24.0943 22.4069 23.8152L27.9474 18.2752C28.0565 21.0759 27.9959 23.9931 27.7656 26.664C27.6684 27.7937 26.7387 28.6858 25.5612 28.7797C21.8834 29.0736 18.1166 29.0732 14.4388 28.7797C13.2613 28.6858 12.3316 27.7937 12.2344 26.664C11.9219 23.0396 11.9219 18.9618 12.2344 15.3369C12.3316 14.2076 13.2595 13.316 14.4366 13.2216C17.1746 13.0017 19.9615 12.9455 22.7245 13.0528L17.1844 18.5931C16.9052 18.8723 16.7149 19.2279 16.6375 19.615L16.0389 22.6072Z" fill="white"/>
+                                </svg>
+                            </button>
+
+                            <button class="button-icon" title="Save"
+                                v-if="page == 'setup' && is_editing_prize && index == edit_prize_index"
+                                @click="savePrize()">
+                                
+                                <svg width="25" height="25" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" rx="20" fill="#05C35F"/>
+                                    <path d="M16.0153 11.0943C17.0075 11.044 18.0033 11.0126 19 11V14.9951C18.3021 14.9951 17.6041 14.9675 16.9146 14.9124C16.473 14.8772 16.1244 14.5425 16.0879 14.1188C16.0049 13.1557 15.9807 12.1072 16.0153 11.0943Z" fill="white"/>
+                                    <path d="M24.1709 15.8302C25.054 15.7596 25.7513 15.0904 25.8242 14.2428C25.9081 13.269 25.962 12.2515 25.9858 11.2216C26.0769 11.2286 26.1678 11.2358 26.2588 11.2431C27.583 11.3492 28.627 12.3526 28.7363 13.6236C29.0879 17.703 29.0879 22.2922 28.7363 26.371C28.627 27.6424 27.5811 28.6463 26.2563 28.7521C26.1709 28.7589 26.0854 28.7656 25.9998 28.7721C25.9962 26.4406 25.9377 24.1132 25.8242 21.9186C25.7513 20.5065 25.0553 19.3916 24.1725 19.2735C21.4129 18.9041 18.5871 18.9041 15.8275 19.2735C14.9447 19.3916 14.2487 20.5065 14.1758 21.9186C14.0623 24.1132 14.0038 26.4406 14.0002 28.7721C13.9146 28.7656 13.8291 28.7589 13.7437 28.7521C12.4189 28.6463 11.373 27.6424 11.2637 26.371C10.9121 22.2922 10.9121 17.703 11.2637 13.6236C11.373 12.3526 12.417 11.3492 13.7412 11.2431C13.8322 11.2358 13.9231 11.2286 14.0142 11.2216C14.038 12.2515 14.0919 13.269 14.1758 14.2428C14.2487 15.0904 14.946 15.7596 15.8291 15.8302C18.5875 16.0504 21.4125 16.0506 24.1709 15.8302Z" fill="white"/>
+                                    <path d="M23.8828 23.3349C23.9596 25.1162 23.9986 27.0067 24 28.8992C21.342 29.0337 18.658 29.0336 16 28.8991C16.0014 27.0067 16.0404 25.1162 16.1172 23.3349C16.1658 22.2052 16.6298 21.3133 17.2183 21.2189C19.0581 20.9233 20.9419 20.9233 22.7817 21.2189C23.3702 21.3133 23.8342 22.2052 23.8828 23.3349Z" fill="white"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="search-form">
+                    <input type="text" class="search-input" v-model="search_keyword" placeholder="Search"/>
+                </div> -->
+        
+                <div id="winners-list" class="lists"
+                    :class="{ hidden: winners.length == 0}">
+                    <div class="section-name">Winners</div>
+                    <ul>
+                        <li class="winner" v-for="(winner, index) in winners" :key="index">
+                            <span style="font-weight: 600;">{{ winner.person }}</span> wins a <span style="font-weight: 600;">{{ winner.prize.name }}</span> from {{ winner.prize.sponsor }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+</body>
+</html>
